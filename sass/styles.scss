@@ -252,7 +252,7 @@ Hero
 ========================================================================== */
 .hero {
   min-height: 750px;
-  background: url('../img/hero-min.jpg') center center;
+  background: url('../img/hero-3.jpg') center center;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -277,12 +277,15 @@ Hero
     font-weight: 300;
     margin-bottom: 80px;
   }
+  // vw, not %, so these don't step when Bootstrap's .container jumps 1170->970->750px
+  // at its 1200/992/768 breakpoints. One continuous knob instead of six.
   .hero-content {
-    padding-top: 40%;
+    padding-top: 13vw;
   }
   .hero-content img {
-    width: 55%;
+    width: 36vw;
     margin-bottom: 12%;
+    transform: translateX(-4%);
   }
 }
 .navigation {
@@ -651,6 +654,79 @@ Instagram
   img {
     width: 100%;
   }
+}
+
+/* ==========================================================================
+Pictures strip
+========================================================================== */
+.collage {
+  position: relative; // anchors the arrows, which sit outside the scroller so they don't scroll away
+}
+.collage-caption {
+  color: $txt-primary;
+  font-size: large;
+  min-height: 1.5em; // holds its line so the strip doesn't jump on an uncaptioned photo
+}
+.collage-scroll {
+  position: relative; // makes this the offsetParent, so the script's offsetLeft maths is relative to it
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+  // Half a scrollport of slack at each end, so the first and last photo can reach the
+  // centre too. Mandatory snap stops it resting out in the empty padding.
+  padding: 0 50%;
+  scroll-snap-type: x mandatory; // a manual swipe settles centred too, not just the arrows
+  -webkit-overflow-scrolling: touch; // momentum scrolling on iOS
+  // Reads as a carousel rather than a scrolling strip: the arrows are the affordance.
+  scrollbar-width: none; // Firefox
+  -ms-overflow-style: none; // old Edge
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  img {
+    // The folder mixes portrait and landscape, so fix the height and let each photo's
+    // aspect ratio set its own width. flex:0 0 auto stops flexbox squashing them to fit.
+    flex: 0 0 auto;
+    height: 60vh;
+    max-height: 560px;
+    width: auto;
+    border-radius: 4px;
+    scroll-snap-align: center;
+  }
+}
+.collage-nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  width: 46px;
+  height: 46px;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, .88);
+  color: $txt-primary;
+  font-size: 26px;
+  line-height: 1;
+  cursor: pointer;
+  box-shadow: 0 1px 6px rgba(0, 0, 0, .25);
+  transition: background-color 200ms ease-in-out, opacity 200ms ease-in-out;
+  &:hover {
+    background: #fff;
+  }
+}
+.collage-nav-muted {
+  opacity: .3;
+  box-shadow: none;
+  &:hover {
+    opacity: 1;
+  }
+}
+.collage-prev {
+  left: 10px;
+}
+.collage-next {
+  right: 10px;
 }
 
 /* ==========================================================================
