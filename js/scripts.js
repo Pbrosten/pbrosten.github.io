@@ -239,35 +239,8 @@ $(document).ready(function () {
 
 /********************** Extras **********************/
 
-// Google map
-function initMap() {
-    var location = {lat: 41.6517309, lng: 2.246733};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: location,
-        mapTypeId: 'hybrid',//'satellite',
-        scrollwheel: false
-    });
-
-    var marker = new google.maps.Marker({
-        position: location,
-        map: map
-    });
-}
-
-function initBBSRMap() {
-    var la_fiesta = {lat: 20.305826, lng: 85.85480189999998};
-    var map = new google.maps.Map(document.getElementById('map-canvas'), {
-        zoom: 15,
-        center: la_fiesta,
-        scrollwheel: false
-    });
-
-    var marker = new google.maps.Marker({
-        position: la_fiesta,
-        map: map
-    });
-}
+// ponytail: the map is a keyless Google Maps embed iframe in index.html — no JS API, no key, no
+// billing account. Bring back the Maps JS API only if we ever want a styled map or custom markers.
 
 // alert_markup
 function alert_markup(alert_type, msg) {
