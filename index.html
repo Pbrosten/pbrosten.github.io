@@ -63,29 +63,43 @@
         /* ponytail: max-height keeps stroke weight even across wordmarks of different lengths.
            !important beats the id-scoped `#intro img{width:100%}` rules in styles.min.css. */
         .wordmark { display: block; margin: 0 auto 20px; width: auto !important; height: auto !important; max-width: 100%; max-height: 56px; }
+        .hero-bg { background-image: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)), url("img/hero-3.jpg"); }
+
+        /* Overrides header .logo img{height:19px} in styles.min.css — same specificity, later in source. */
+        header .logo img { height: 72px; }
+
+        /* The theme sizes the header for a 19px logo. These undo the hardcoded pixel offsets
+           (header padding 50px, .member-actions top:41px, .navicon top:48px) so the row centres
+           itself at any logo height. !important is required: js/scripts.js:94-116 rewrites
+           padding and top as inline styles on every scroll event.
+           Longhand padding, not the shorthand, to leave queries.css's mobile padding-left alone. */
+        header { padding-top: 20px !important; padding-bottom: 20px !important; }
+        header .navicon { top: 50% !important; transform: translateY(-50%); }
+
+        /* Desktop only — below 992px queries.css:35 drops .member-actions into the nav overlay
+           as position:static, and centring it there would fight that layout. */
+        @media screen and (min-width: 992px) {
+            header .header-content { display: flex; align-items: center; }
+            header .member-actions { top: 50% !important; transform: translateY(-50%); }
+        }
     </style>
 </head>
 <body id="top">
-<!--[if lt IE 8]>
-<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade
-    your browser</a> to improve your experience.</p>
-<![endif]-->
-<section class="hero">
+<section class="hero hero-bg">
     <section class="navigation">
         <header>
             <div class="header-content">
-                <div class="logo"><a href="#"><img src="img/logo.png" alt="Logo"></a></div>
+                <div class="logo"><a href="#"><img src="img/Logo-trim.png" alt="Logo"></a></div>
                 <div class="header-nav">
                     <nav>
                         <ul class="primary-nav">
                             <li><a href="#intro">How we met</a></li>
                             <li><a href="#events">Events</a></li>
-                            <li><a href="#instagram">Instagram</a></li>
-                            <li><a href="#eng-pics">Pictures</a></li>
-                            <li class="hidden-sm hidden-xs"><a href="#video-bg">Glimpse of the city</a></li>
+                            <li><a href="#pictures">Pictures</a></li>
+                            <li class="hidden-sm hidden-xs"><a href="#video-bg">Venue</a></li>
                         </ul>
                         <ul class="member-actions">
-                            <li><a href="#map" class="login">Venue</a></li>
+                            <!-- <li><a href="#map" class="login">Venue</a></li> -->
                             <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
                         </ul>
                     </nav>
@@ -100,10 +114,7 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="hero-content text-center">
-                    <!--<h1>Peter & Elena </h1>-->
-                    <img src="img/headers/PE.png">
-                    <!--<p class="intro">Ram & Antara are getting hitched!</p>-->
-                    <!--<a href="#" class="btn btn-fill btn-large btn-margin-right">Scroll Down</a> -->
+                    <img src="img/PE.png">
                 </div>
             </div>
         </div>
