@@ -86,6 +86,7 @@
             header .member-actions { visibility: hidden; opacity: 0; }
             .navigation.fixed header .member-actions { visibility: visible; opacity: 1; }
 
+            header ul.primary-nav { margin-left: 0; }
             header .header-nav { flex: 1 1 auto; display: flex; }
             header .header-nav::before,
             header .header-nav::after {
@@ -104,7 +105,7 @@
 
         .hero .hero-content img {
             width: clamp(220px, 32vw, 460px);
-            margin: 0 auto 24px;
+            margin: 0 auto;
             transform: none;
         }
 
@@ -114,7 +115,7 @@
             letter-spacing: .22em;
             text-transform: uppercase;
             font-weight: 300;
-            margin: 0;
+            margin: 0 0 18px;
             text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
         }
         .hero-meta span { opacity: .55; padding: 0 .4em; }
@@ -150,8 +151,8 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="hero-content text-center">
-                    <img src="img/PE.png" alt="Peter &amp; Elena">
                     <p class="hero-meta">10 September 2027 <span>&middot;</span> L'Ametlla del Vallès, Barcelona</p>
+                    <img src="img/PE.png" alt="Peter &amp; Elena">
                 </div>
             </div>
         </div>
@@ -508,11 +509,11 @@
     ga('send', 'pageview');
 </script>
 <script>
-    // Pin the wordmark a fixed gap below the header's white rule.
+    // Pin the hero content a fixed gap below the header's white rule.
     (function () {
         var header = document.querySelector('.hero header'),
             content = document.querySelector('.hero .hero-content'),
-            gap = -16;  // px between the rule and the top of the wordmark
+            gap = 40;
         function place() {
             // Past 20px the site's own script removes the border and shrinks the header,
             // so only measure while the rule is actually on screen.
@@ -590,18 +591,13 @@
         }
         var stepped = 0; // direction of the last arrow click, for the caption slide
         function go(step) {
-            if (rewinding) return; // an arrow's scrollTo would fight the tween as much as a swipe
-            // Every photo including the ends can sit centred now, so the index is a
-            // reliable end test and wrapping is just modulo.
+            if (rewinding) return;
             stepped = step;
             scrollToIndex((nearest() + step + imgs.length) % imgs.length);
         }
         prev.addEventListener('click', function () { go(-1); });
         next.addEventListener('click', function () { go(1); });
 
-        // Caption swap: the outgoing line slides out the way the strip is moving, the new
-        // one comes back the other way. It runs from the heading's own edge to the centre,
-        // so measure the h3's text rather than its full-width box.
         var OUT_MS = 180, IN_MS = 280, still = window.matchMedia('(prefers-reduced-motion: reduce)'),
             travel = 0, shown = -1, swap, rewinding = false;
         function measure() {
@@ -623,9 +619,7 @@
                 caption.style.opacity = 1;
             }, OUT_MS);
         }
-        // Follows the photo nearest the centre: its caption, and on the first photo a
-        // muted back arrow, since the only interesting move there is rightwards. Still
-        // clickable -- it wraps round to the last photo.
+
         function sync() {
             var i = nearest();
             prev.classList.toggle('collage-nav-muted', i === 0);
