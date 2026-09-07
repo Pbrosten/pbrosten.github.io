@@ -63,7 +63,25 @@
         /* ponytail: max-height keeps stroke weight even across wordmarks of different lengths.
            !important beats the id-scoped `#intro img{width:100%}` rules in styles.min.css. */
         .wordmark { display: block; margin: 0 auto 20px; width: auto !important; height: auto !important; max-width: 100%; max-height: 56px; }
-        .hero-bg { background-image: linear-gradient(rgba(255, 255, 255, .3), rgba(255, 255, 255, .3)), url("img/hero-3.jpg"); }
+        /* Bottom-weighted scrim rather than a flat white wash: darkens only where the nav
+           and hero text sit, so the pastel sky in the middle keeps its contrast. */
+        .hero-bg {
+            background-image:
+                linear-gradient(rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .1) 40%, rgba(0, 0, 0, .45) 100%),
+                url("img/hero-3.jpg");
+        }
+
+        /* hero-3.jpg is 4:3 with the sky up top and the couple in the lower third.
+           `center center` (styles.min.css) slices both off in a wide band; 25% keeps
+           the sunset in frame and drops the couple toward the RSVP button. */
+        .hero {
+            background-position: center 25%;
+            /* Was a fixed 750px: overflowed small laptops, left dead space on tall monitors.
+               svh is the stable viewport unit, so mobile browser chrome sliding in and out
+               doesn't resize the hero mid-scroll. vh first as the fallback. */
+            min-height: 100vh;
+            min-height: 100svh;
+        }
 
         /* Overrides header .logo img{height:19px} in styles.min.css — same specificity, later in source. */
         header .logo img { height: 72px; }
@@ -82,6 +100,28 @@
             header .header-content { display: flex; align-items: center; }
             header .member-actions { top: 50% !important; transform: translateY(-50%); }
         }
+
+        /* Overrides .hero .hero-content img{width:36vw;margin-bottom:12%;transform:translateX(-4%)}.
+           36vw was unbounded (1000px+ on a large monitor); the translateX was hand-nudging
+           a logo that centres on its own once the width is capped. */
+        .hero .hero-content img {
+            width: clamp(220px, 32vw, 460px);
+            margin: 0 auto 24px;
+            transform: none;
+        }
+
+        /* Hero date/place line. clamp() so it stays legible on a phone without
+           shouting on a wide monitor. */
+        .hero-meta {
+            color: #fff;
+            font-size: clamp(13px, 1.3vw, 17px);
+            letter-spacing: .22em;
+            text-transform: uppercase;
+            font-weight: 300;
+            margin: 0;
+            text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
+        }
+        .hero-meta span { opacity: .55; padding: 0 .4em; }
     </style>
 </head>
 <body id="top">
@@ -114,7 +154,8 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="hero-content text-center">
-                    <img src="img/PE.png">
+                    <img src="img/PE.png" alt="Peter &amp; Elena">
+                    <p class="hero-meta">10 September 2027 <span>&middot;</span> L'Ametlla del Vallès, Barcelona</p>
                 </div>
             </div>
         </div>
