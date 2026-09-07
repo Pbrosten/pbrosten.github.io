@@ -60,71 +60,32 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <style>
-        /* Single source of truth for the header logo. Sized by width, not height, so the
-           number is authored rather than falling out of the PNG's aspect ratio — the nav
-           centring below derives from it. --nav-gap is the logo-to-links gap when scrolled. */
         :root { --logo-w: 68px; --nav-gap: 75px; }
 
-        /* ponytail: max-height keeps stroke weight even across wordmarks of different lengths.
-           !important beats the id-scoped `#intro img{width:100%}` rules in styles.min.css. */
         .wordmark { display: block; margin: 0 auto 20px; width: auto !important; height: auto !important; max-width: 100%; max-height: 56px; }
-        /* Bottom-weighted scrim rather than a flat white wash: darkens only where the nav
-           and hero text sit, so the pastel sky in the middle keeps its contrast. */
         .hero-bg {
             background-image:
                 linear-gradient(rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .1) 40%, rgba(0, 0, 0, .45) 100%),
                 url("img/hero-3.jpg");
         }
-
-        /* hero-3.jpg is 4:3 with the sky up top and the couple in the lower third.
-           `center center` (styles.min.css) slices both off in a wide band; 25% keeps
-           the sunset in frame and drops the couple toward the RSVP button. */
         .hero {
             background-position: center 25%;
-            /* Was a fixed 750px: overflowed small laptops, left dead space on tall monitors.
-               svh is the stable viewport unit, so mobile browser chrome sliding in and out
-               doesn't resize the hero mid-scroll. vh first as the fallback. */
             min-height: 100vh;
             min-height: 100svh;
         }
 
         /* Overrides header .logo img{height:19px} in styles.min.css — same specificity, later in source. */
         header .logo img { width: var(--logo-w); height: auto; }
-
-        /* The theme sizes the header for a 19px logo. These undo the hardcoded pixel offsets
-           (header padding 50px, .member-actions top:41px, .navicon top:48px) so the row centres
-           itself at any logo height. !important is required: js/scripts.js:94-116 rewrites
-           padding and top as inline styles on every scroll event.
-           Longhand padding, not the shorthand, to leave queries.css's mobile padding-left alone. */
         header { padding-top: 20px !important; padding-bottom: 20px !important; }
         header .navicon { top: 50% !important; transform: translateY(-50%); }
 
-        /* Desktop only — below 992px queries.css:35 drops .member-actions into the nav overlay
-           as position:static, and centring it there would fight that layout. */
         @media screen and (min-width: 992px) {
             header .header-content { display: flex; align-items: center; }
             header .member-actions { top: 50% !important; transform: translateY(-50%); }
 
-            /* One RSVP on screen at a time: the hero's own button carries the first view,
-               the header's fades in once that button has scrolled away. scripts.js:93 puts
-               .fixed on section.navigation past 20px. visibility, not just opacity, so the
-               hidden link leaves the tab order too. */
             header .member-actions { visibility: hidden; opacity: 0; }
             .navigation.fixed header .member-actions { visibility: visible; opacity: 1; }
 
-            /* The nav links start centred over the hero and slide left when .fixed darkens the
-               bar; the logo never moves. The spacers live inside .header-nav so only the links
-               ride them. flex-grow is used because it is one of the few layout properties that
-               actually animates — justify-content would snap.
-               --nav-gap is the gap the theme had as ul.primary-nav's margin-left (zeroed below
-               so it isn't counted twice), and it is what the leading spacer falls back to once
-               its grow hits 0.
-               The trailing spacer carries an extra --logo-w so the links centre on the whole
-               header rather than on the space left over beside the logo. Working through it:
-               with header width W, logo L, links N, the two spacers split the free space
-               F = W - 2L - 2*gap - N evenly, putting the links' centre at
-               L + gap + F/2 + N/2, which reduces to exactly W/2. */
-            header ul.primary-nav { margin-left: 0; }
             header .header-nav { flex: 1 1 auto; display: flex; }
             header .header-nav::before,
             header .header-nav::after {
@@ -141,17 +102,12 @@
             header .header-nav::after { transition: none; }
         }
 
-        /* Overrides .hero .hero-content img{width:36vw;margin-bottom:12%;transform:translateX(-4%)}.
-           36vw was unbounded (1000px+ on a large monitor); the translateX was hand-nudging
-           a logo that centres on its own once the width is capped. */
         .hero .hero-content img {
             width: clamp(220px, 32vw, 460px);
             margin: 0 auto 24px;
             transform: none;
         }
 
-        /* Hero date/place line. clamp() so it stays legible on a phone without
-           shouting on a wide monitor. */
         .hero-meta {
             color: #fff;
             font-size: clamp(13px, 1.3vw, 17px);
@@ -338,31 +294,31 @@
             </button>
             <div class="collage-scroll">
                 <!-- gallery:start -->
-                <img src="img/gallery/00-costa-brava-1.jpg" alt="00 costa brava 1" loading="lazy">
-                <img src="img/gallery/01-sant-jordi.jpg" alt="01 sant jordi" loading="lazy">
-                <img src="img/gallery/02-formenterra.jpg" alt="02 formenterra" loading="lazy">
-                <img src="img/gallery/03-montserrat.jpg" alt="03 montserrat" loading="lazy">
-                <img src="img/gallery/04-garmisch-2.JPG" alt="04 garmisch 2" loading="lazy">
-                <img src="img/gallery/05-christmas.jpg" alt="05 christmas" loading="lazy">
-                <img src="img/gallery/06-costa-brava-2.jpg" alt="06 costa brava 2" loading="lazy">
-                <img src="img/gallery/12-smores.jpg" alt="12 smores" loading="lazy">
-                <img src="img/gallery/15-peratallada.JPG" alt="15 peratallada" loading="lazy">
-                <img src="img/gallery/25-go-nats.jpg" alt="25 go nats" loading="lazy">
-                <img src="img/gallery/25-runnin-1.jpg" alt="25 runnin 1" loading="lazy">
-                <img src="img/gallery/26-quaker-lake.jpg" alt="26 quaker lake" loading="lazy">
-                <img src="img/gallery/30-Rome.jpg" alt="30 Rome" loading="lazy">
-                <img src="img/gallery/35-runnin-2.jpg" alt="35 runnin 2" loading="lazy">
-                <img src="img/gallery/45-viena.jpg" alt="45 viena" loading="lazy">
-                <img src="img/gallery/48-home-deed.jpg" alt="48 home deed" loading="lazy">
-                <img src="img/gallery/48-keys.jpg" alt="48 keys" loading="lazy">
-                <img src="img/gallery/49-home-reno.jpg" alt="49 home reno" loading="lazy">
-                <img src="img/gallery/49-pizza-date.jpg" alt="49 pizza date" loading="lazy">
-                <img src="img/gallery/50-moving.jpg" alt="50 moving" loading="lazy">
-                <img src="img/gallery/51-cuddles.jpg" alt="51 cuddles" loading="lazy">
-                <img src="img/gallery/60-port-del-compte.jpg" alt="60 port del compte" loading="lazy">
-                <img src="img/gallery/65-london.jpg" alt="65 london" loading="lazy">
-                <img src="img/gallery/98-paretallada-2.jpg" alt="98 paretallada 2" loading="lazy">
-                <img src="img/gallery/99-engagement.jpg" alt="99 engagement" loading="lazy">
+                <img src="img/gallery/00-costa-brava-1.jpg" alt="00 costa brava 1" width="2009" height="3013" loading="lazy">
+                <img src="img/gallery/01-sant-jordi.jpg" alt="01 sant jordi" width="1170" height="2080" loading="lazy">
+                <img src="img/gallery/02-formenterra.jpg" alt="02 formenterra" width="1500" height="2000" loading="lazy">
+                <img src="img/gallery/03-montserrat.jpg" alt="03 montserrat" width="1536" height="2048" loading="lazy">
+                <img src="img/gallery/04-garmisch-2.JPG" alt="04 garmisch 2" width="5504" height="8256" loading="lazy">
+                <img src="img/gallery/05-christmas.jpg" alt="05 christmas" width="2777" height="4029" loading="lazy">
+                <img src="img/gallery/06-costa-brava-2.jpg" alt="06 costa brava 2" width="2316" height="3088" loading="lazy">
+                <img src="img/gallery/12-smores.jpg" alt="12 smores" width="1170" height="2080" loading="lazy">
+                <img src="img/gallery/15-peratallada.JPG" alt="15 peratallada" width="1170" height="2080" loading="lazy">
+                <img src="img/gallery/25-go-nats.jpg" alt="25 go nats" width="2268" height="3024" loading="lazy">
+                <img src="img/gallery/25-runnin-1.jpg" alt="25 runnin 1" width="3024" height="4032" loading="lazy">
+                <img src="img/gallery/26-quaker-lake.jpg" alt="26 quaker lake" width="3024" height="4032" loading="lazy">
+                <img src="img/gallery/30-Rome.jpg" alt="30 Rome" width="2268" height="3024" loading="lazy">
+                <img src="img/gallery/35-runnin-2.jpg" alt="35 runnin 2" width="3024" height="4032" loading="lazy">
+                <img src="img/gallery/45-viena.jpg" alt="45 viena" width="3024" height="4032" loading="lazy">
+                <img src="img/gallery/48-home-deed.jpg" alt="48 home deed" width="1600" height="1600" loading="lazy">
+                <img src="img/gallery/48-keys.jpg" alt="48 keys" width="2316" height="3088" loading="lazy">
+                <img src="img/gallery/49-home-reno.jpg" alt="49 home reno" width="4032" height="3024" loading="lazy">
+                <img src="img/gallery/49-pizza-date.jpg" alt="49 pizza date" width="1200" height="1599" loading="lazy">
+                <img src="img/gallery/50-moving.jpg" alt="50 moving" width="1152" height="2048" loading="lazy">
+                <img src="img/gallery/51-cuddles.jpg" alt="51 cuddles" width="3456" height="4608" loading="lazy">
+                <img src="img/gallery/60-port-del-compte.jpg" alt="60 port del compte" width="3840" height="5120" loading="lazy">
+                <img src="img/gallery/65-london.jpg" alt="65 london" width="1170" height="2080" loading="lazy">
+                <img src="img/gallery/98-paretallada-2.jpg" alt="98 paretallada 2" width="2237" height="3726" loading="lazy">
+                <img src="img/gallery/99-engagement.jpg" alt="99 engagement" width="1200" height="1600" loading="lazy">
                 <!-- gallery:end -->
             </div>
             <button class="collage-nav collage-next" type="button" aria-label="Next photo">
@@ -634,6 +590,7 @@
         }
         var stepped = 0; // direction of the last arrow click, for the caption slide
         function go(step) {
+            if (rewinding) return; // an arrow's scrollTo would fight the tween as much as a swipe
             // Every photo including the ends can sit centred now, so the index is a
             // reliable end test and wrapping is just modulo.
             stepped = step;
@@ -646,7 +603,7 @@
         // one comes back the other way. It runs from the heading's own edge to the centre,
         // so measure the h3's text rather than its full-width box.
         var OUT_MS = 180, IN_MS = 280, still = window.matchMedia('(prefers-reduced-motion: reduce)'),
-            travel = 0, shown = -1, swap;
+            travel = 0, shown = -1, swap, rewinding = false;
         function measure() {
             travel = heading ? document.createRange().selectNodeContents(heading)
                 .getBoundingClientRect().width / 2 : 0;
@@ -672,7 +629,9 @@
         function sync() {
             var i = nearest();
             prev.classList.toggle('collage-nav-muted', i === 0);
-            if (!caption || i === shown) return;
+            // The rewind crosses every photo, so leaving this on would strobe the whole
+            // story through the caption line on the way back.
+            if (rewinding || !caption || i === shown) return;
             // stepped is set by the arrows, so a wrap round the end still animates the way
             // the strip actually travelled; a swipe falls back to comparing indexes.
             var dir = stepped || (shown < 0 ? 0 : (i > shown ? 1 : -1));
@@ -687,37 +646,64 @@
         box.addEventListener('scroll', sync);
         window.addEventListener('resize', function () { measure(); sync(); });
         measure();
+
+        // Add rewind to the photo gallery on start-up.
+        rewinding = true;
+        box.scrollLeft = centreOf(imgs[imgs.length - 1]);
         sync();
-    })();
-</script>
-<!-- <script>
-    // TEMP gallery filename labels - for choosing and ordering the photos.
-    // Delete this whole <script> block once the selection is final.
-    (function () {
-        var box = document.querySelector('.collage-scroll');
-        if (!box) return;
-        var labels = [].map.call(box.querySelectorAll('img'), function (img) {
-            var el = document.createElement('span');
-            el.style.cssText = 'position:absolute;z-index:3;padding:3px 7px;border-radius:3px;' +
-                'background:rgba(0,0,0,.78);color:#fff;font:12px/1.4 monospace;' +
-                'pointer-events:none;white-space:nowrap'; // never intercept a drag on the strip
-            box.appendChild(el); // absolutely positioned, so it is not a flex item and scrolls with the strip
-            return {img: img, el: el};
-        });
-        function place() {
-            labels.forEach(function (l, i) {
-                // Position against the image, not a fixed offset: widths differ per photo and
-                // only settle once each one has loaded.
-                l.el.style.left = (l.img.offsetLeft + 8) + 'px';
-                l.el.style.top = (l.img.offsetTop + 8) + 'px';
-                l.el.textContent = (i + 1) + '/' + labels.length + '  ' +
-                    l.img.getAttribute('src').split('/').pop();
+
+        if (caption) {
+            caption.textContent = captionOf(imgs[0]);
+            caption.style.visibility = 'hidden';
+        }
+
+        var FADE_MS = 700;
+        function reveal() {
+            rewinding = false;
+            shown = -1;
+            sync();
+            if (!caption) return;
+            if (still.matches) { caption.style.visibility = ''; return; }
+            caption.style.transition = 'none';
+            caption.style.opacity = 0;
+            caption.style.visibility = '';
+            caption.offsetWidth; // flush, or the browser folds the reset into the fade
+            caption.style.transition = 'opacity ' + FADE_MS + 'ms ease-out';
+            caption.style.opacity = 1;
+        }
+
+        var REWIND_MS = 4000;
+        function rewind(done) {
+            var from = box.scrollLeft, to = centreOf(imgs[0]), t0 = null;
+            box.style.scrollSnapType = 'none';
+            box.style.overflowX = 'hidden';
+            requestAnimationFrame(function frame(t) {
+                if (t0 === null) t0 = t;
+                var p = Math.min((t - t0) / REWIND_MS, 1),
+                    // easeInOutCubic: creeps off the last photo, coasts, settles on the first
+                    e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+                box.scrollLeft = from + (to - from) * e;
+                if (p < 1) return requestAnimationFrame(frame);
+                box.style.scrollSnapType = ''; // back to the stylesheet's mandatory snap
+                box.style.overflowX = '';
+                done();
             });
         }
-        place();
-        window.addEventListener('load', place);
-        window.addEventListener('resize', place);
+
+        var section = document.querySelector('#pictures');
+        if (section && window.IntersectionObserver) {
+            var io = new IntersectionObserver(function (entries) {
+                if (!entries[0].isIntersecting) return;
+                io.disconnect(); // once per page load, not on every pass
+                if (still.matches) { box.scrollLeft = centreOf(imgs[0]); reveal(); return; }
+                rewind(reveal);
+            }, { threshold: 0.35 });
+            io.observe(section);
+        } else {
+            // No observer to end the rewind, so nothing would ever release the caption.
+            reveal();
+        }
     })();
-</script> -->
+</script>
 </body>
 </html>
