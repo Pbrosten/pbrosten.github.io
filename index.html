@@ -60,6 +60,11 @@
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <style>
+        /* Single source of truth for the header logo. Sized by width, not height, so the
+           number is authored rather than falling out of the PNG's aspect ratio — the nav
+           centring below derives from it. --nav-gap is the logo-to-links gap when scrolled. */
+        :root { --logo-w: 68px; --nav-gap: 75px; }
+
         /* ponytail: max-height keeps stroke weight even across wordmarks of different lengths.
            !important beats the id-scoped `#intro img{width:100%}` rules in styles.min.css. */
         .wordmark { display: block; margin: 0 auto 20px; width: auto !important; height: auto !important; max-width: 100%; max-height: 56px; }
@@ -84,7 +89,7 @@
         }
 
         /* Overrides header .logo img{height:19px} in styles.min.css — same specificity, later in source. */
-        header .logo img { height: 72px; }
+        header .logo img { width: var(--logo-w); height: auto; }
 
         /* The theme sizes the header for a 19px logo. These undo the hardcoded pixel offsets
            (header padding 50px, .member-actions top:41px, .navicon top:48px) so the row centres
@@ -99,6 +104,41 @@
         @media screen and (min-width: 992px) {
             header .header-content { display: flex; align-items: center; }
             header .member-actions { top: 50% !important; transform: translateY(-50%); }
+
+            /* One RSVP on screen at a time: the hero's own button carries the first view,
+               the header's fades in once that button has scrolled away. scripts.js:93 puts
+               .fixed on section.navigation past 20px. visibility, not just opacity, so the
+               hidden link leaves the tab order too. */
+            header .member-actions { visibility: hidden; opacity: 0; }
+            .navigation.fixed header .member-actions { visibility: visible; opacity: 1; }
+
+            /* The nav links start centred over the hero and slide left when .fixed darkens the
+               bar; the logo never moves. The spacers live inside .header-nav so only the links
+               ride them. flex-grow is used because it is one of the few layout properties that
+               actually animates — justify-content would snap.
+               --nav-gap is the gap the theme had as ul.primary-nav's margin-left (zeroed below
+               so it isn't counted twice), and it is what the leading spacer falls back to once
+               its grow hits 0.
+               The trailing spacer carries an extra --logo-w so the links centre on the whole
+               header rather than on the space left over beside the logo. Working through it:
+               with header width W, logo L, links N, the two spacers split the free space
+               F = W - 2L - 2*gap - N evenly, putting the links' centre at
+               L + gap + F/2 + N/2, which reduces to exactly W/2. */
+            header ul.primary-nav { margin-left: 0; }
+            header .header-nav { flex: 1 1 auto; display: flex; }
+            header .header-nav::before,
+            header .header-nav::after {
+                content: '';
+                flex: 1 0 var(--nav-gap);
+                transition: flex-grow 300ms ease-in-out;
+            }
+            header .header-nav::after { flex-basis: calc(var(--nav-gap) + var(--logo-w)); }
+            .navigation.fixed header .header-nav::before { flex-grow: 0; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            header .header-nav::before,
+            header .header-nav::after { transition: none; }
         }
 
         /* Overrides .hero .hero-content img{width:36vw;margin-bottom:12%;transform:translateX(-4%)}.
