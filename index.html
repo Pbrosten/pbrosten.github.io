@@ -59,6 +59,11 @@
     <link rel="stylesheet" href="node_modules/animate.css/animate.min.css" onerror="loadCssFromCDN('animate.css')">
     <link rel="stylesheet" href="node_modules/font-awesome/css/font-awesome.min.css" onerror="loadCssFromCDN('font-awesome.css')">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <style>
+        /* ponytail: max-height keeps stroke weight even across wordmarks of different lengths.
+           !important beats the id-scoped `#intro img{width:100%}` rules in styles.min.css. */
+        .wordmark { display: block; margin: 0 auto 20px; width: auto !important; height: auto !important; max-width: 100%; max-height: 56px; }
+    </style>
 </head>
 <body id="top">
 <!--[if lt IE 8]>
@@ -96,7 +101,7 @@
             <div class="col-md-10 col-md-offset-1">
                 <div class="hero-content text-center">
                     <!--<h1>Peter & Elena </h1>-->
-                    <img src="img/logo-2-nobg.png">
+                    <img src="img/headers/PE.png">
                     <!--<p class="intro">Ram & Antara are getting hitched!</p>-->
                     <!--<a href="#" class="btn btn-fill btn-large btn-margin-right">Scroll Down</a> -->
                 </div>
@@ -116,7 +121,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3>We are getting married</h3>
+                <img src="img/headers/1.png" class="wordmark" alt="We are getting married!">
                 <p>Join us in Barcelona on September 10th 2027 to celebrate.</p>
                 <!-- <div class="share-bar"></div> -->
             </div>
@@ -129,7 +134,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3 class="header">How we met</h3>
+                <img src="img/headers/2.png" class="wordmark" alt="How we met">
             </div>
         </div>
         <div class="row">
@@ -154,7 +159,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h3 class="header">Events</h3>
+                <img src="img/headers/6.4.png" class="wordmark" alt="Events">
             </div>
         </div>
         <div class="row">
@@ -231,7 +236,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <h3>A picture is worth a thousand words!</h3>
+                <img src="img/headers/3.png" class="wordmark" alt="A picture is worth a thousand words">
                 <p class="collage-caption" aria-live="polite"></p>
             </div>
         </div>
@@ -304,7 +309,7 @@
 
 <section id="map" class="section-padding">
     <div class="text-center">
-        <h3>How do I get there?</h3>
+        <img src="img/headers/4.png" class="wordmark" alt="The venue">
         <p>It's way easier than you think!</p>
     </div>
     <iframe id="map-canvas" title="Masía Can Plantada on Google Maps"
@@ -368,7 +373,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <h3>What are you waiting for?</h3>
+                <img src="img/headers/5.png" class="wordmark" alt="Can we count on you?">
                 <p>We would greatly appreciate if you could RSVP before [RSVP DEADLINE DATE]</p>
                 <form id="rsvp-form" class="rsvp-form"
                       action=""
