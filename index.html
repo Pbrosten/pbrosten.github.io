@@ -212,7 +212,8 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
+            <!-- Option 1 -->
+            <!-- <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
                 <div class="wp3">
                     <p><strong>Afternoon</strong></p>
 
@@ -252,6 +253,31 @@
                 <div class="wp6">
                     <h5>No need to pack a present</h5>
                     <p>In Catalonia, cash is traditionally gift for newlyweds. No registry, no guessing whether they need another set of wine glasses, and no trying to fit a wedding gift into your suitcase.</p>
+                </div>
+            </div> -->
+            <!-- Option 2 -->
+            <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
+                <div class="wp3">
+                    <p><strong>Afternoon</strong></p>
+
+                    <h5>Ceremony <span class="time">Times TBD</span></h5>
+                    <p>[EVENT 1 DESCRIPTION - Add details about the first day's events, atmosphere, dress code preferences, and what guests should expect.]</p>
+                </div>
+                <div class="wp5">
+                    <h5>Aperitif <span class="time">Times TBD</span></h5>
+                    <p>[EVENT 2 DESCRIPTION - Describe the second event, its significance, dress code, and any special activities planned.]</p>
+                </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
+                <div class="wp4">
+                    <p><strong>Evening</strong></p>
+
+                    <h5>Banquet <span class="time">Times TBD</span></h5>
+                    <p>[EVENT 3 DESCRIPTION - Provide details about this pre-wedding event, including timing, traditions, and dress requirements.]</p>
+                </div>
+                <div class="wp6">
+                    <h5>Festa! <span class="time">Times TBD</span></h5>
+                    <p>[MAIN EVENT DESCRIPTION - This is typically the main wedding ceremony. Describe the significance, expected guest count, and key elements of the ceremony.]</p>
                 </div>
             </div>
         </div>
@@ -425,49 +451,100 @@
             <div class="col-md-6 col-md-offset-3">
                 <img src="img/headers/5.png" class="wordmark" alt="Can we count on you?">
                 <p>We would greatly appreciate if you could RSVP before [RSVP DEADLINE DATE]</p>
+                <!-- Field names come from the Google Form. Do NOT rename them by hand: a wrong
+                     entry.NNN is silently discarded by Google, not rejected. Re-derive them with
+                     "Get pre-filled link" after any edit to the Form.
+                     See site-wiki/planning/rsvp-google-form.md -->
                 <form id="rsvp-form" class="rsvp-form"
-                      action=""
+                      action="https://docs.google.com/forms/d/e/1FAIpQLSf7IFJkh3GQV_PyO0lALTShkCorhRvuWUgJ0oOI5jITzE84GQ/formResponse"
                       method="POST">
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-envelope"></i><input type="email" name="email" class=""
+                                <i class="fa fa-envelope"></i><input type="email" name="emailAddress"
                                                                      placeholder="Your email"
                                                                      required>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
-                                <i class="fa fa-user"></i><input name="name" class=""
+                                <i class="fa fa-user"></i><input name="entry.459759396"
                                                                  placeholder="Your name"
                                                                  required>
                             </div>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-6 col-sm-6">
+                        <div class="col-md-12">
                             <div class="form-input-group">
-                                <i class="fa fa-users"></i><input type="number" name="extras" class="" min="0"
-                                                                  max="4"
-                                                                  placeholder="Husband/Wife or kids"
-                                                                  required>
-                            </div>
-                        </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-key"></i><input type="number" name="invite_code" id="invite_code"
-                                                                class="" min="0"
-                                                                placeholder="Invite code"
-                                                                required>
+                                <!-- option values must match the Form's option text exactly -->
+                                <i class="fa fa-check"></i><select name="entry.877086558" required>
+                                    <option value="" disabled selected>Will you be joining us?</option>
+                                    <option value="Yes, I'll be there">Yes, I'll be there</option>
+                                    <option value="Sorry, can't make it">Sorry, can't make it</option>
+                                    <option value="I'm not sure">I'm not sure</option>
+                                </select>
                             </div>
                         </div>
                     </div>
                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-input-group tall">
+                                <i class="fa fa-users"></i><textarea name="entry.1498135098"
+                                                                     placeholder="Full names of everyone in your party, including yourself"
+                                                                     required></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-input-group tall">
+                                <i class="fa fa-cutlery"></i><textarea name="entry.1009027462"
+                                                                       placeholder="Any dietary restrictions (per person if needed)"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-bed"></i><select name="entry.1306621828" required>
+                                    <option value="" disabled selected>Need accommodation?</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="col-md-6 col-sm-6">
+                            <div class="form-input-group">
+                                <i class="fa fa-bus"></i><select name="entry.234007366">
+                                    <option value="" selected>Transport to the venue?</option>
+                                    <option value="Yes">Yes</option>
+                                    <option value="No">No</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Deliberately has NO name attribute: the code is checked in the browser and
+                         never submitted. An unnamed input is not serialised, and the Google Form
+                         has no question to receive it. -->
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-input-group">
+                                <i class="fa fa-key"></i><input id="invite_code"
+                                                                placeholder="Invitation code (check your save the date)"
+                                                                autocomplete="off" required>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- "en" here, "ca" in cat/index.html -->
+                    <input type="hidden" name="entry.104865033" value="en">
+                    <!-- asks Google to email the guest a copy of their response -->
+                    <input type="hidden" name="emailReceipt" value="true">
+                    <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
                     <button class="btn-fill rsvp-btn">
-                        Yes,
-                        that's me!
+                        Yes, that's me!
                     </button>
                 </form>
             </div>

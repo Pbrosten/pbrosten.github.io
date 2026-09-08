@@ -885,6 +885,11 @@ RSVP form
       text-align: left;
       position: relative;
 
+      // textarea rows: let the box grow instead of clipping to the fixed 55px
+      &.tall {
+        height: auto;
+      }
+
       i {
         color: $accent-color;
         font-size: 14px;
@@ -899,14 +904,15 @@ RSVP form
         left: 30px;
         transform: translateY(-50%);
       }
-      i.fa-user, i.fa-users, i.fa-envelope, .fa-key {
+      i.fa-user, i.fa-users, i.fa-envelope, .fa-key,
+      i.fa-check, i.fa-cutlery, i.fa-bed, i.fa-bus {
         font-size: 14px;
         position: absolute;
         top: 50%;
         transform: translateY(-50%);
         margin-left: 20px;
       }
-      input {
+      input, select, textarea {
         padding-left: 68px;
         width: 100%;
         height: 100%;
@@ -914,6 +920,20 @@ RSVP form
         -webkit-border-radius: 6px;
         border-radius: 6px;
         border: none;
+        background: transparent;
+        color: inherit;
+      }
+      select:invalid {
+        color: $form-placeholder;
+      }
+      textarea {
+        height: auto;
+        padding-top: 16px;
+        padding-bottom: 16px;
+        resize: vertical;
+      }
+      textarea::placeholder {
+        color: $form-placeholder;
       }
       input::-webkit-input-placeholder {
         color: $form-placeholder;
