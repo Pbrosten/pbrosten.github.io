@@ -408,6 +408,18 @@ Intro
     width: 100%;
     height: auto;
   }
+  // The landmark silhouettes are sized by column WIDTH (the rule above), so they land ~250px tall
+  // against a ~410px text block. They cannot be stretched to match: both are ~1:1, so filling that
+  // height would need 426px of column, and widening the side columns only makes the text taller.
+  // Centring them instead makes the difference read as framing rather than as misalignment.
+  // Scoped to a class so the wordmark row above is untouched, and to md+ because the narrow
+  // layout uses a separate row (hidden-md hidden-lg) that relies on Bootstrap's push classes.
+  @media (min-width: 992px) {
+    .intro-row {
+      display: flex;
+      align-items: center;
+    }
+  }
 }
 #intro p {
   text-align: center;
