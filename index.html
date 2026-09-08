@@ -10,11 +10,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
-    <title>We are engaged!</title>
+    <!-- Names first: a browser tab truncates to roughly the first 15 characters, so this reads
+         as "Peter & Elena…" where it matters most, and still carries the date in a bookmark. -->
+    <title>Peter &amp; Elena &middot; 10 September 2027</title>
     <meta name="description" content="Join us to celebrate our wedding day.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="Peter & Elena are getting hitched">
+    <meta property="og:title" content="Peter &amp; Elena are getting hitched">
     <meta property="og:description" content="Join us to celebrate our wedding day.">
     <!-- Absolute URL, not a relative path: scrapers fetch this without a page context.
          img/og-cover.jpg is a purpose-built 1200x630 (the 1.91:1 OG ratio) crop of the hero,
@@ -26,6 +28,11 @@
     <meta property="og:image:height" content="630">
     <meta property="og:image:alt" content="Peter and Elena sitting together at the Grand Canyon">
     <meta property="og:type" content="website">
+    <!-- The www host, deliberately: the apex peter-elena-wedding.es is NOT this site (see
+         site-wiki/planning/hosting.md). og:url is what collapses shares of any variant of the
+         link — trailing slash, tracking params — onto one canonical preview. -->
+    <meta property="og:url" content="https://www.peter-elena-wedding.es/">
+    <meta property="og:site_name" content="Peter &amp; Elena">
     <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
