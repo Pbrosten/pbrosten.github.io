@@ -801,14 +801,67 @@ Engagement Pics
 /* ==========================================================================
 Embed video
 ========================================================================== */
+// Three Cingles de Bertí photographs crossfading, 9s each. No JS and no extra markup: image 1 is
+// the element's own background and images 2 and 3 ride on the pseudo-elements, fading out in turn
+// to reveal what sits underneath. All three are on screen, so ALL THREE need their footer credit
+// — two photographers, two licence versions. See site-wiki/content-and-assets.md.
+// At `cover` the band shows only the middle ~28% of each frame; nudge `center 40%` to reframe.
 #video-bg {
   height: 300px;
+  position: relative;
+  background: url('../img/venue-bg-1-rosemary.jpg') center center;
+  background-size: cover;
+
+  &::before, &::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 0;
+    background-position: center center;
+    background-size: cover;
+    animation: 27s infinite;
+  }
+  &::before {
+    background-image: url('../img/venue-bg-2-sunset.jpg');
+    animation-name: banner-mid;
+  }
+  &::after {
+    background-image: url('../img/venue-bg-3-meadow.jpg');
+    // This frame is cliff along the top and pine forest below, so a centred 300px slice is
+    // almost all forest. Anchor to the top to keep the crest and sky in the band.
+    background-position: center top;
+    animation-name: banner-top;
+  }
+}
+// The cycle starts and ends on venue-bg-1, so the chosen image is what loads first.
+// Visible: bg-1 0-33%, bg-2 33-67%, bg-3 67-100%, with 6% crossfades between.
+// bg-2 resets to transparent at 88-94% while bg-3 still covers it, so the reset is never seen.
+// Edit these percentages together or the two layers desynchronise.
+@keyframes banner-mid {   // venue-bg-2, middle layer
+  0%, 27% { opacity: 0; }
+  33%, 88% { opacity: 1; }
+  94%, 100% { opacity: 0; }
+}
+@keyframes banner-top {   // venue-bg-3, on top
+  0%, 61% { opacity: 0; }
+  67%, 94% { opacity: 1; }
+  100% { opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #video-bg::before, #video-bg::after {
+    animation: none;
+    opacity: 0;   // rest on venue-bg-1
+  }
 }
 #video-content {
   width: 100%;
   height: 100%;
   padding-top: 100px;
   position: relative;
+  z-index: 1;   // above the two crossfading layers
   background: rgba(17, 17, 17, 0.5);
   text-align: center;
 }
@@ -958,6 +1011,15 @@ footer {
   .content {
     border-top: 1px solid $keyline-color;
     padding-bottom: 20px;
+  }
+  // licence attribution — present because it must be, not because it wants attention.
+  // Overrides the global `p` (line-height 29px, padding-bottom 20px), which is far too airy
+  // for 11px text and leaves the credits floating apart.
+  .credit {
+    font-size: 11px;
+    line-height: 17px;
+    padding-bottom: 3px;
+    opacity: 0.6;
   }
   .to-top-wrapper {
     font-size: 30px;
