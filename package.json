@@ -24,10 +24,5 @@
     "gulp-sass": "^5.0.0",
     "gulp-uglify": "^3.0.2",
     "sass": "^1.25.0"
-  },
-  "dependencies": {
-    "animate.css": "^3.7.2",
-    "font-awesome": "^4.7.0",
-    "waypoints": "^4.0.1"
   }
 }
