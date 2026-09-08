@@ -191,8 +191,9 @@ $(document).ready(function () {
             start: new Date('2027-09-10T16:00:00+02:00'),
             end: new Date('2027-09-11T04:00:00+02:00'),
 
-            // Event Address
-            address: 'Masía Can Plantada, L\'Ametlla del Vallés',
+            // Event Address. Catalan throughout — "Masia" without the accent, not the venue's own
+            // "Masía". This is a third copy of the venue name; index.html:418 and :435 are the others.
+            address: 'Masia Can Plantada, L\'Ametlla del Vallès',
 
             // Event Description
             description: "We can't wait to see you on our big day. For any queries or issues, reach out to Peter Brosten at +34 641 93 62 45."

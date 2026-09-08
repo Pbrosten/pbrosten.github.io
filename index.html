@@ -270,9 +270,12 @@
     </div>
 </section>
 
-<section id="video-bg" class="hidden-sm hidden-xs">
+<!-- Shown on phones too. The old hidden-sm/hidden-xs was upstream's, and it was there because
+     this band used to be a YouTube video background; it is three CSS-crossfaded photos now.
+     queries.css shortens the band below 992px so the panorama is not cropped to a square. -->
+<section id="video-bg">
     <div id="video-content">
-        <h5>L'Ametlla del Vallés</h5>
+        <h5>L'Ametlla del Vallès</h5>
         <p>Barcelona</p>
     </div>
 </section>
@@ -360,6 +363,9 @@
                 <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
                     <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
                 </a>
+                <!-- Filled by js/scripts.js (createCalendar). Lives here, not in the RSVP success
+                     modal, so guests can save the date before they decide. -->
+                <div id="add-to-cal" style="margin-top:15px"></div>
             </div>
         </div>
         <div class="row">
@@ -404,9 +410,12 @@
 <section id="map" class="section-padding">
     <div class="text-center">
         <img src="img/headers/4.png" class="wordmark" alt="The venue">
+        <!-- 1511 is the venue's own date, from masiacanplantada.com. Deliberate: the Catalan
+             heritage inventory (poblesdecatalunya.cat/element.php?e=17745) says 1570, for a reform
+             of a 12th-13th c. mas. Not an error to fix — we are quoting our hosts. -->
         <p>Welcome to beautiful <a href="https://www.masiacanplantada.com/">Can Plantada</a>, which is built in <b>1511</b>!</p>
     </div>
-    <iframe id="map-canvas" title="Masía Can Plantada on Google Maps"
+    <iframe id="map-canvas" title="Masia Can Plantada on Google Maps"
             src="https://www.google.com/maps?q=41.6517269,2.2493079&amp;hl=en&amp;z=15&amp;output=embed"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <div id="map-content-wrapper" class="container pointer-events-none">
@@ -420,8 +429,12 @@
                 <div id="map-content" class="pointer-events-auto">
                     <div class="row">
                         <div class="col-md-6">
-                            <h5>Masía Can Plantada</h5>
-                            <p>Camí de Can Plantada, s/n, L'Ametlla del Vallés, Barcelona 08480, Spain</p>
+                            <!-- Catalan "Masia", no accent — our spelling, not the venue's own
+                                 "Masía". Deliberate, so the whole venue line reads as Catalan
+                                 alongside "Camí" and "Vallès". Keep the three copies in sync:
+                                 here, the iframe title at :418, and js/scripts.js:196. -->
+                            <h5>Masia Can Plantada</h5>
+                            <p>Camí de Can Plantada, s/n, L'Ametlla del Vallès, Barcelona 08480, Spain</p>
                         </div>
                         <div class="col-md-6">
                             <h5>Peter Brosten</h5>
@@ -457,7 +470,6 @@
                     <div class="section-padding">
                         <h3>Thank you!</h3>
                         <p>We are glad to see you join us on our big day.</p>
-                        <div id="add-to-cal"></div>
                     </div>
                 </div>
             </div><!-- /.modal-content -->

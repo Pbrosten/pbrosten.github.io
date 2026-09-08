@@ -13,6 +13,19 @@
 
 /* Responsive nav kicks in */
 @media screen and (max-width: 991px) {
+    /* The banner photos are 1920x640 panoramas. At the desktop 300px band a phone-width
+       viewport would `cover` down to ~43% of the frame — a near-square crop of a landscape.
+       A shorter band keeps it wide; padding-top holds the caption at the same third. */
+    #video-bg {
+        height: 180px;
+    }
+
+    /* 45px, not a third of the band: below ~400px the place name wraps to two lines and
+       "Barcelona" lands on the bottom edge. Checked at 320 / 390 / 768. */
+    #video-content {
+        padding-top: 45px;
+    }
+
     header {
         width: 90%;
         padding-left: 25px;
