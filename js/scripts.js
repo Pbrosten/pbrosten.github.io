@@ -195,7 +195,7 @@ $(document).ready(function () {
             address: 'Masía Can Plantada, L\'Ametlla del Vallés',
 
             // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, please contact Mr. Amit Roy at +91 9876543210."
+            description: "We can't wait to see you on our big day. For any queries or issues, reach out to Peter Brosten at +34 641 93 62 45."
         }
     });
 
