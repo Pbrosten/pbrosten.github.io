@@ -51,7 +51,15 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <style>
-        :root { --logo-w: 68px; --nav-gap: 75px; }
+        /* The hero stack (nav + date line + wordmark) is laid out from the top in px, but the
+           couple's heads land wherever the cover crop puts them — 34% down the viewport on a
+           phone, higher still on a short desktop window. Fixed px above a scaling image is what
+           put the wordmark on their heads at 320x568, 1280x720 and any landscape phone. So every
+           term in that stack is capped against svh: the taller the window, the more it may use.
+           Desktop is unchanged (each clamp sits at its max by ~1000px tall). Keep the vh line
+           before each svh one — browsers without svh take the fallback. */
+        :root { --logo-w: clamp(40px, 6.5vh, 68px); --nav-gap: 75px; }
+        :root { --logo-w: clamp(40px, 6.5svh, 68px); }
 
         .wordmark { display: block; margin: 0 auto 20px; width: auto !important; height: auto !important; max-width: 100%; max-height: 56px; }
         .hero-bg {
@@ -67,7 +75,8 @@
 
         /* Overrides header .logo img{height:19px} in styles.min.css — same specificity, later in source. */
         header .logo img { width: var(--logo-w); height: auto; }
-        header { padding-top: 20px !important; padding-bottom: 20px !important; }
+        header { padding-top: clamp(8px, 1.8vh, 20px) !important; padding-bottom: clamp(8px, 1.8vh, 20px) !important; }
+        header { padding-top: clamp(8px, 1.8svh, 20px) !important; padding-bottom: clamp(8px, 1.8svh, 20px) !important; }
         header .navicon { top: 50% !important; transform: translateY(-50%); }
 
         @media screen and (min-width: 992px) {
@@ -95,7 +104,8 @@
         }
 
         .hero .hero-content img {
-            width: clamp(220px, 32vw, 460px);
+            width: min(clamp(200px, 32vw, 460px), 42vh);
+            width: min(clamp(200px, 32vw, 460px), 42svh);
             margin: 0 auto;
             transform: none;
         }
@@ -106,10 +116,32 @@
             letter-spacing: .22em;
             text-transform: uppercase;
             font-weight: 300;
-            margin: 0 0 18px;
+            /* This is a <p>, so it inherits the global paragraph rule — line-height 29px and
+               20px of padding-bottom. On a phone that is ~48px of dead air between the nav and
+               the wordmark, which is most of what pushed the wordmark onto their heads. */
+            line-height: 1.5;
+            padding-bottom: 0;
+            margin: 0 0 clamp(8px, 2vh, 18px);
+            margin: 0 0 clamp(8px, 2svh, 18px);
             text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
         }
         .hero-meta span { opacity: .55; padding: 0 .4em; }
+
+        /* Under ~400px the venue line needs a third row, and that row lands on Elena's hat.
+           Tighter tracking keeps it to two. */
+        @media screen and (max-width: 400px) {
+            .hero-meta { letter-spacing: .1em; }
+        }
+        @media screen and (max-width: 340px) {
+            .hero-meta { font-size: 12px; }
+        }
+
+        /* Landscape phones (iPhone SE is 667x375): even scaled down, nav + date + wordmark is
+           taller than the strip of canyon above the couple. The date line goes — the invitation
+           section right below repeats it — rather than let the wordmark sit on their heads. */
+        @media screen and (max-height: 560px) and (max-width: 900px) {
+            .hero-meta { display: none; }
+        }
     </style>
 </head>
 <body id="top">
@@ -585,15 +617,18 @@
 <script src="js/vendor/ouical.js"></script>
 <script src="js/scripts.min.js"></script>
 <script>
-    // Pin the hero content a fixed gap below the header's white rule.
+    // Pin the hero content a gap below the header's white rule.
     (function () {
         var header = document.querySelector('.hero header'),
-            content = document.querySelector('.hero .hero-content'),
-            gap = 40;
+            content = document.querySelector('.hero .hero-content');
         function place() {
             // Past 20px the site's own script removes the border and shrinks the header,
             // so only measure while the rule is actually on screen.
             if (window.pageYOffset < 20) {
+                // 40px on a normal window, less on a short one — same reason the CSS above
+                // scales: this gap sits between the rule and a wordmark that has to stay
+                // clear of the couple's heads, and short windows raise the heads.
+                var gap = Math.min(40, window.innerHeight * 0.045);
                 content.style.paddingTop = header.offsetHeight + gap + 'px';
             }
         }
