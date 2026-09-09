@@ -655,6 +655,24 @@ RSVP form
         color: $form-placeholder;
       }
     }
+    // informative blurb under the accommodation/transport row — collapsed by default
+    // so it never competes with the fields above it.
+    .form-note {
+      text-align: left;
+      margin: 0 0 10px;
+
+      summary {
+        cursor: pointer;
+        font-size: 13px;
+        color: $accent-color;
+        padding: 5px 0;
+      }
+      p {
+        font-size: 13px;
+        line-height: 22px;
+        padding: 8px 0 0;
+      }
+    }
   }
 }
 
