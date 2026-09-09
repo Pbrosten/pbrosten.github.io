@@ -1,23 +1,26 @@
 <!doctype html>
 <!--[if lt IE 7]>
-<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="en"> <![endif]-->
+<html class="no-js lt-ie9 lt-ie8 lt-ie7" lang="ca"> <![endif]-->
 <!--[if IE 7]>
-<html class="no-js lt-ie9 lt-ie8" lang="en"> <![endif]-->
+<html class="no-js lt-ie9 lt-ie8" lang="ca"> <![endif]-->
 <!--[if IE 8]>
-<html class="no-js lt-ie9" lang="en"> <![endif]-->
+<html class="no-js lt-ie9" lang="ca"> <![endif]-->
 <!--[if gt IE 8]><!-->
-<html class="no-js" lang="en"> <!--<![endif]-->
+<html class="no-js" lang="ca"> <!--<![endif]-->
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <!-- Catalan twin of the root index.html. Same markup, same images, translated copy; every
+         asset path gains a ../ prefix. Structural changes have to be made in BOTH files —
+         see site-wiki/planning/multilingual.md. -->
     <!-- Names first: a browser tab truncates to roughly the first 15 characters, so this reads
          as "Peter & Elena…" where it matters most, and still carries the date in a bookmark. -->
-    <title>Peter &amp; Elena &middot; 10 September 2027</title>
-    <meta name="description" content="Join us to celebrate our wedding day.">
+    <title>Peter &amp; Elena &middot; 10 de setembre de 2027</title>
+    <meta name="description" content="Acompanya'ns a celebrar el dia del nostre casament.">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="theme-color" content="#ffffff">
-    <meta property="og:title" content="Peter &amp; Elena are getting hitched">
-    <meta property="og:description" content="Join us to celebrate our wedding day.">
+    <meta property="og:title" content="En Peter i l'Elena es casen">
+    <meta property="og:description" content="Acompanya'ns a celebrar el dia del nostre casament.">
     <!-- Absolute URL, not a relative path: scrapers fetch this without a page context.
          img/og-cover.jpg is a purpose-built 1200x630 (the 1.91:1 OG ratio) crop of the hero,
          anchored to the bottom so the couple is not cut off. Kept under 300 KB — WhatsApp
@@ -26,36 +29,36 @@
     <meta property="og:image" content="https://www.peter-elena-wedding.es/img/og-cover.jpg">
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
-    <meta property="og:image:alt" content="Peter and Elena sitting together at the Grand Canyon">
+    <meta property="og:image:alt" content="En Peter i l'Elena asseguts junts al Gran Canyó">
     <meta property="og:type" content="website">
     <!-- The www host, deliberately: the apex peter-elena-wedding.es is NOT this site (see
          site-wiki/planning/hosting.md). og:url is what collapses shares of any variant of the
          link — trailing slash, tracking params — onto one canonical preview. -->
-    <meta property="og:url" content="https://www.peter-elena-wedding.es/">
+    <meta property="og:url" content="https://www.peter-elena-wedding.es/cat/">
     <meta property="og:site_name" content="Peter &amp; Elena">
-    <meta property="og:locale" content="en">
+    <meta property="og:locale" content="ca">
     <!-- Identical in both files: hreflang describes the set, not the current page. The folder is
          cat/ but the language tag is ca — ISO 639-1. x-default points at English. -->
     <link rel="alternate" hreflang="en" href="https://www.peter-elena-wedding.es/">
     <link rel="alternate" hreflang="ca" href="https://www.peter-elena-wedding.es/cat/">
     <link rel="alternate" hreflang="x-default" href="https://www.peter-elena-wedding.es/">
-    <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
-    <link rel="manifest" href="manifest.json">
-    <link rel="mask-icon" href="safari-pinned-tab.svg" color="#5bbad5">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="manifest" href="../manifest.json">
+    <link rel="mask-icon" href="../safari-pinned-tab.svg" color="#5bbad5">
 
-    <link rel="stylesheet" href="css/normalize.min.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/styles.min.css">
-    <link rel="stylesheet" href="css/queries.css">
+    <link rel="stylesheet" href="../css/normalize.min.css">
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/styles.min.css">
+    <link rel="stylesheet" href="../css/queries.css">
     <!-- Straight to cdnjs. These used to point at node_modules/ with an onerror fallback, but
          node_modules is gitignored, so on Pages they 404'd on every load and always took the
          fallback anyway. Versions match what package.json installs (3.7.2 / 4.7.0 / 4.0.1);
          bump both together if you ever upgrade. -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
+    <script src="../js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     <style>
         /* The hero stack (nav + date line + wordmark) is laid out from the top in px, but the
            couple's heads land wherever the cover crop puts them — 34% down the viewport on a
@@ -71,7 +74,7 @@
         .hero-bg {
             background-image:
                 linear-gradient(rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .1) 40%, rgba(0, 0, 0, .45) 100%),
-                url("img/hero-3.jpg");
+                url("../img/hero-3.jpg");
         }
         .hero {
             background-position: center 25%;
@@ -134,7 +137,8 @@
         .hero-meta span { opacity: .55; padding: 0 .4em; }
 
         /* Under ~400px the venue line needs a third row, and that row lands on Elena's hat.
-           Tighter tracking keeps it to two. */
+           Tighter tracking keeps it to two. The Catalan date line is longer than the English
+           one ("10 de setembre de 2027"), so this matters more here, not less. */
         @media screen and (max-width: 400px) {
             .hero-meta { letter-spacing: .1em; }
         }
@@ -155,21 +159,20 @@
     <section class="navigation">
         <header>
             <div class="header-content">
-                <div class="logo"><a href="#"><img src="img/Logo-trim.png" alt="Logo"></a></div>
+                <div class="logo"><a href="#"><img src="../img/Logo-trim.png" alt="Logo"></a></div>
                 <div class="header-nav">
                     <nav>
                         <ul class="primary-nav">
-                            <li><a href="#intro">How We Met</a></li>
-                            <li><a href="#pictures">Our Story</a></li>
-                            <li><a href="#events">The Event</a></li>
-                            <li><a href="#map">The Venue</a></li>
-                            <!-- Relative, not /cat/, so the switcher also works opening the files
+                            <li><a href="#intro">Com ens vam conèixer</a></li>
+                            <li><a href="#pictures">La nostra història</a></li>
+                            <li><a href="#events">L'esdeveniment</a></li>
+                            <li><a href="#map">El lloc</a></li>
+                            <!-- Relative, not /, so the switcher also works opening the files
                                  straight off disk. No auto-redirect by navigator.language. -->
-                            <li><a href="cat/" lang="ca" hreflang="ca">Català</a></li>
+                            <li><a href="../" lang="en" hreflang="en">English</a></li>
                         </ul>
                         <ul class="member-actions">
-                            <!-- <li><a href="#map" class="login">Venue</a></li> -->
-                            <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
+                            <li><a href="#rsvp" class="btn-white btn-small">Confirma</a></li>
                         </ul>
                     </nav>
                 </div>
@@ -183,15 +186,15 @@
         <div class="row">
             <div class="col-md-10 col-md-offset-1">
                 <div class="hero-content text-center">
-                    <p class="hero-meta">10 September 2027 <span>&middot;</span> L'Ametlla del Vallès, Barcelona</p>
-                    <img src="img/PE.png" alt="Peter &amp; Elena">
+                    <p class="hero-meta">10 de setembre de 2027 <span>&middot;</span> L'Ametlla del Vallès, Barcelona</p>
+                    <img src="../img/PE.png" alt="Peter &amp; Elena">
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-sm-4 hidden-xs"></div>
             <div class="col-sm-4 hidden-xs text-center"><a href="#rsvp"
-                                                           class="btn btn-accent btn-large rsvp-btn">RSVP</a></div>
+                                                           class="btn btn-accent btn-large rsvp-btn">Confirma</a></div>
             <div class="col-sm-4 hidden-xs"></div>
         </div>
     </div>
@@ -202,8 +205,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="img/headers/1.png" class="wordmark" alt="We are getting married!">
-                <p>Join us in Barcelona on September 10th 2027 to celebrate.</p>
+                <!-- The headers are hand-drawn artwork in English; kept identical in both
+                     languages on purpose. Only the alt text is translated. -->
+                <img src="../img/headers/1.png" class="wordmark" alt="Ens casem!">
+                <p>Acompanya'ns a Barcelona el 10 de setembre de 2027 per celebrar-ho.</p>
             </div>
         </div>
     </div>
@@ -214,25 +219,25 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="img/headers/2.png" class="wordmark" alt="How we met">
+                <img src="../img/headers/2.png" class="wordmark" alt="Com ens vam conèixer">
             </div>
         </div>
         <div class="row intro-row">
-            <div class="col-md-3 hidden-sm hidden-xs"><img src="img/space-needle.png" class="wp1"
+            <div class="col-md-3 hidden-sm hidden-xs"><img src="../img/space-needle.png" class="wp1"
                                                           alt="Space Needle, Seattle"></div>
             <div class="col-md-6">
-                <p>Peter & Elena first met in Seattle in the fall of 2021. Elena had recently begun a year as an au pair, embarking on her first experience living abroad, far from Catalunya. Having just returned from two years in Norway, Peter knew all too well the courage it takes to move to a new country and embrace a different culture.</p>
-                <p>What began as a friendship soon blossomed into something more. When Elena’s year in Seattle came to an end and moved back to Catalunya, they decided to give a long-distance relationship a try. For the next six months, they made the distance work, until it was no longer necessary. In September 2022, Peter packed his bags and moved to Barcelona.</p>
-                <p>Four years later, they are still joyfully in love and finally have an answer to the question their friends and family have been asking ever since:</p>
-                <p>September 10th, 2027. That’s when we’re getting married.</p>
+                <p>En Peter i l'Elena es van conèixer a Seattle la tardor del 2021. L'Elena tot just començava un any com a au pair, la seva primera experiència vivint a l'estranger, lluny de Catalunya. En Peter, que acabava de tornar de dos anys a Noruega, sabia prou bé el coratge que cal per marxar a un país nou i abraçar-ne una cultura diferent.</p>
+                <p>El que va començar com una amistat aviat es va convertir en alguna cosa més. Quan l'any de l'Elena a Seattle es va acabar i va tornar a Catalunya, van decidir provar una relació a distància. Durant sis mesos van fer que la distància funcionés, fins que ja no va caldre. El setembre del 2022, en Peter va fer les maletes i es va traslladar a Barcelona.</p>
+                <p>Quatre anys després, segueixen feliçment enamorats i per fi tenen resposta a la pregunta que els amics i la família els fan des de llavors:</p>
+                <p>10 de setembre del 2027. Aquell dia ens casem.</p>
             </div>
-            <div class="col-md-3 hidden-sm hidden-xs"><img src="img/sagrada-familia.png" class="wp2"
+            <div class="col-md-3 hidden-sm hidden-xs"><img src="../img/sagrada-familia.png" class="wp2"
                                                           alt="Sagrada Família, Barcelona"></div>
         </div>
         <div class="row">
-            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/space-needle.png"
+            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="../img/space-needle.png"
                                                                                   class="wp8" alt=""></div>
-            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/sagrada-familia.png"
+            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="../img/sagrada-familia.png"
                                                                                   class="wp9" alt=""></div>
         </div>
     </div>
@@ -242,44 +247,44 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 text-center">
-                <img src="img/headers/3.png" class="wordmark" alt="A picture is worth a thousand words">
+                <img src="../img/headers/3.png" class="wordmark" alt="Una imatge val més que mil paraules">
                 <p class="collage-caption" aria-live="polite"></p>
             </div>
         </div>
         <div class="collage">
-            <button class="collage-nav collage-prev" type="button" aria-label="Previous photo">
+            <button class="collage-nav collage-prev" type="button" aria-label="Foto anterior">
                 <i class="fa fa-angle-left"></i>
             </button>
             <div class="collage-scroll">
                 <!-- gallery:start -->
-                <img src="img/gallery/00-costa-brava-1.jpg" alt="00 costa brava 1" loading="lazy">
-                <img src="img/gallery/01-sant-jordi.jpg" alt="01 sant jordi" loading="lazy">
-                <img src="img/gallery/02-formenterra.jpg" alt="02 formenterra" loading="lazy">
-                <img src="img/gallery/03-montserrat.jpg" alt="03 montserrat" loading="lazy">
-                <img src="img/gallery/04-garmisch-2.JPG" alt="04 garmisch 2" loading="lazy">
-                <img src="img/gallery/05-christmas.jpg" alt="05 christmas" loading="lazy">
-                <img src="img/gallery/06-costa-brava-2.jpg" alt="06 costa brava 2" loading="lazy">
-                <img src="img/gallery/12-smores.jpg" alt="12 smores" loading="lazy">
-                <img src="img/gallery/15-peratallada.JPG" alt="15 peratallada" loading="lazy">
-                <img src="img/gallery/25-go-nats.jpg" alt="25 go nats" loading="lazy">
-                <img src="img/gallery/25-runnin-1.jpg" alt="25 runnin 1" loading="lazy">
-                <img src="img/gallery/26-quaker-lake.jpg" alt="26 quaker lake" loading="lazy">
-                <img src="img/gallery/30-Rome.jpg" alt="30 Rome" loading="lazy">
-                <img src="img/gallery/35-runnin-2.jpg" alt="35 runnin 2" loading="lazy">
-                <img src="img/gallery/45-viena.jpg" alt="45 viena" loading="lazy">
-                <img src="img/gallery/48-home-deed.jpg" alt="48 home deed" loading="lazy">
-                <img src="img/gallery/48-keys.jpg" alt="48 keys" loading="lazy">
-                <img src="img/gallery/49-home-reno.jpg" alt="49 home reno" loading="lazy">
-                <img src="img/gallery/49-pizza-date.jpg" alt="49 pizza date" loading="lazy">
-                <img src="img/gallery/50-moving.jpg" alt="50 moving" loading="lazy">
-                <img src="img/gallery/51-cuddles.jpg" alt="51 cuddles" loading="lazy">
-                <img src="img/gallery/60-port-del-compte.jpg" alt="60 port del compte" loading="lazy">
-                <img src="img/gallery/65-london.jpg" alt="65 london" loading="lazy">
-                <img src="img/gallery/98-paretallada-2.jpg" alt="98 paretallada 2" loading="lazy">
-                <img src="img/gallery/99-engagement.jpg" alt="99 engagement" loading="lazy">
+                <img src="../img/gallery/00-costa-brava-1.jpg" alt="00 costa brava 1" loading="lazy">
+                <img src="../img/gallery/01-sant-jordi.jpg" alt="01 sant jordi" loading="lazy">
+                <img src="../img/gallery/02-formenterra.jpg" alt="02 formenterra" loading="lazy">
+                <img src="../img/gallery/03-montserrat.jpg" alt="03 montserrat" loading="lazy">
+                <img src="../img/gallery/04-garmisch-2.JPG" alt="04 garmisch 2" loading="lazy">
+                <img src="../img/gallery/05-christmas.jpg" alt="05 christmas" loading="lazy">
+                <img src="../img/gallery/06-costa-brava-2.jpg" alt="06 costa brava 2" loading="lazy">
+                <img src="../img/gallery/12-smores.jpg" alt="12 smores" loading="lazy">
+                <img src="../img/gallery/15-peratallada.JPG" alt="15 peratallada" loading="lazy">
+                <img src="../img/gallery/25-go-nats.jpg" alt="25 go nats" loading="lazy">
+                <img src="../img/gallery/25-runnin-1.jpg" alt="25 runnin 1" loading="lazy">
+                <img src="../img/gallery/26-quaker-lake.jpg" alt="26 quaker lake" loading="lazy">
+                <img src="../img/gallery/30-Rome.jpg" alt="30 Rome" loading="lazy">
+                <img src="../img/gallery/35-runnin-2.jpg" alt="35 runnin 2" loading="lazy">
+                <img src="../img/gallery/45-viena.jpg" alt="45 viena" loading="lazy">
+                <img src="../img/gallery/48-home-deed.jpg" alt="48 home deed" loading="lazy">
+                <img src="../img/gallery/48-keys.jpg" alt="48 keys" loading="lazy">
+                <img src="../img/gallery/49-home-reno.jpg" alt="49 home reno" loading="lazy">
+                <img src="../img/gallery/49-pizza-date.jpg" alt="49 pizza date" loading="lazy">
+                <img src="../img/gallery/50-moving.jpg" alt="50 moving" loading="lazy">
+                <img src="../img/gallery/51-cuddles.jpg" alt="51 cuddles" loading="lazy">
+                <img src="../img/gallery/60-port-del-compte.jpg" alt="60 port del compte" loading="lazy">
+                <img src="../img/gallery/65-london.jpg" alt="65 london" loading="lazy">
+                <img src="../img/gallery/98-paretallada-2.jpg" alt="98 paretallada 2" loading="lazy">
+                <img src="../img/gallery/99-engagement.jpg" alt="99 engagement" loading="lazy">
                 <!-- gallery:end -->
             </div>
-            <button class="collage-nav collage-next" type="button" aria-label="Next photo">
+            <button class="collage-nav collage-next" type="button" aria-label="Foto següent">
                 <i class="fa fa-angle-right"></i>
             </button>
         </div>
@@ -301,83 +306,39 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <img src="img/headers/6.4.png" class="wordmark" alt="Events">
+                <img src="../img/headers/6.4.png" class="wordmark" alt="Esdeveniments">
             </div>
         </div>
         <div class="row">
-            <!-- Option 1 -->
-            <!-- <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
-                <div class="wp3">
-                    <p><strong>Afternoon</strong></p>
-
-                    <h5>Ceremony <span class="time">Times TBD</span></h5>
-                    <p>[EVENT 1 DESCRIPTION - Add details about the first day's events, atmosphere, dress code preferences, and what guests should expect.]</p>
-                </div>
-                <div class="wp3">
-                    <h5>Aperitif <span class="time">Times TBD</span></h5>
-                    <p>[EVENT 2 DESCRIPTION - Describe the second event, its significance, dress code, and any special activities planned.]</p>
-                </div>
-                <div class="wp5">
-                    <p><strong>Evening</strong></p>
-
-                    <h5>Banquet <span class="time">Times TBD</span></h5>
-                    <p>[EVENT 3 DESCRIPTION - Provide details about this pre-wedding event, including timing, traditions, and dress requirements.]</p>
-                </div>
-                <div class="wp5">
-                    <h5>Festa! <span class="time">Times TBD</span></h5>
-                    <p>[MAIN EVENT DESCRIPTION - This is typically the main wedding ceremony. Describe the significance, expected guest count, and key elements of the ceremony.]</p>
-                </div>
-            </div>
-            <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
-                <div class="wp4">
-                    <p><strong>Catalan Weddings 101</strong></p>
-
-                    <h5>Dinner happens late</h5>
-                    <p>Catalans like to eat late, and wedding banquets are no exception. Dinner often doesn't start until 8 p.m. or later, so have a snack beforehand and come prepared for a long night.</p>
-                </div>
-                <div class="wp4">
-                    <h5>Cava is a part of the celebration</h5>
-                    <p>Catalonia is home to Cava, a sparkling wine traditionally made in the region. It is a staple of Catalan celebrations and will likely accompany everything from the first toast to the final cheers of the evening.</p>
-                </div>
-                <div class="wp6">
-                    <h5>Pace yourself</h5>
-                    <p>Catalan weddings are long, and we mean that in the best possible way. Between the ceremony, cocktails, dinner, and dancing, the party can continue well into the early morning. Take your time, enjoy every part of it, and whatever you do, don’t make early morning plans.</p>
-                </div>
-                <div class="wp6">
-                    <h5>No need to pack a present</h5>
-                    <p>In Catalonia, cash is traditionally gift for newlyweds. No registry, no guessing whether they need another set of wine glasses, and no trying to fit a wedding gift into your suitcase.</p>
-                </div>
-            </div> -->
-            <!-- Option 2 -->
             <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
                 <div class="wp3">
-                    <p><strong>Afternoon</strong></p>
+                    <p><strong>Tarda</strong></p>
 
-                    <h5>Ceremony <span class="time">Exact Times TBD</span></h5>
-                    <p>All events will be held at the same venue, the ceremony included.</p>
+                    <h5>Cerimònia <span class="time">Horari per confirmar</span></h5>
+                    <p>Tots els actes es faran al mateix lloc, la cerimònia inclosa.</p>
                 </div>
                 <div class="wp5">
-                    <h5>Aperitif <span class="time">Exact Times TBD</span></h5>
-                    <p>After the ceremony, everyone is invited to catch-up and relax over some drinks and snacks.</p>
+                    <h5>Aperitiu <span class="time">Horari per confirmar</span></h5>
+                    <p>Després de la cerimònia, tothom està convidat a posar-se al dia i relaxar-se amb unes begudes i alguna cosa per picar.</p>
                 </div>
             </div>
             <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
                 <div class="wp4">
-                    <p><strong>Evening</strong></p>
+                    <p><strong>Vespre</strong></p>
 
-                    <h5>Banquet <span class="time">Exact Times TBD</span></h5>
-                    <p>Remeber that Catalan dinner often start after 8 p.m. When it comes time for the banquet, bring your apetite!</p>
+                    <h5>Banquet <span class="time">Horari per confirmar</span></h5>
+                    <p>Recordeu que a Catalunya els sopars sovint comencen passades les 8 del vespre. Quan arribi el banquet, veniu amb gana!</p>
                 </div>
                 <div class="wp6">
-                    <h5>Festa! <span class="time">Exact Times TBD</span></h5>
-                    <p>Now that everyone is wined and dined, it is time to cut lose! Remember to pace yourself catalan weddings often run well into the early morning.</p>
+                    <h5>Festa! <span class="time">Horari per confirmar</span></h5>
+                    <p>Ara que tothom ja ha begut i sopat, és hora de desfermar-se! Dosifiqueu-vos, que els casaments catalans sovint s'allarguen fins ben entrada la matinada.</p>
                 </div>
             </div>
         </div>
         <div class="row section-padding">
             <div class="col-md-4 col-md-offset-4 text-center">
                 <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
-                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
+                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;Vestimenta
                 </a>
                 <!-- Filled by js/scripts.js (createCalendar). Lives here, not in the RSVP success
                      modal, so guests can save the date before they decide. -->
@@ -394,14 +355,14 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Tanca"><span>&times;</span>
                     </button>
-                    <h3 class="text-center section-padding">Dress Codes</h3>
-                    <h5>[EVENT NAME 1]</h5>
+                    <h3 class="text-center section-padding">Codi de vestimenta</h3>
+                    <h5>[NOM DE L'ACTE 1]</h5>
                     <p>
-                        <strong>[DRESS CODE THEME]</strong>
+                        <strong>[TEMA DEL CODI DE VESTIMENTA]</strong>
                         <br>
-                        [Describe dress code expectations for this event. Include suggestions for ladies and gentlemen. You can add links to Pinterest boards or other style inspiration resources as needed.]
+                        [Descriu què s'espera de la vestimenta en aquest acte. Inclou suggeriments per a elles i per a ells. Si cal, pots afegir enllaços a taulers de Pinterest o altres fonts d'inspiració.]
                     </p>
                 </div>
             </div><!-- /.modal-content -->
@@ -413,32 +374,32 @@
 
 <section id="map" class="section-padding">
     <div class="text-center">
-        <img src="img/headers/4.png" class="wordmark" alt="The venue">
+        <img src="../img/headers/4.png" class="wordmark" alt="El lloc">
         <!-- 1511 is the venue's own date, from masiacanplantada.com. Deliberate: the Catalan
              heritage inventory (poblesdecatalunya.cat/element.php?e=17745) says 1570, for a reform
              of a 12th-13th c. mas. Not an error to fix — we are quoting our hosts. -->
-        <p>Welcome to beautiful <a href="https://www.masiacanplantada.com/">Can Plantada</a>, which is built in <b>1511</b>!</p>
+        <p>Benvinguts a la preciosa <a href="https://www.masiacanplantada.com/">Can Plantada</a>, construïda l'any <b>1511</b>!</p>
     </div>
-    <iframe id="map-canvas" title="Masia Can Plantada on Google Maps"
-            src="https://www.google.com/maps?q=41.6517269,2.2493079&amp;hl=en&amp;z=15&amp;output=embed"
+    <!-- hl=ca, not hl=en: localised map labels for free. Only difference from the root page. -->
+    <iframe id="map-canvas" title="Masia Can Plantada a Google Maps"
+            src="https://www.google.com/maps?q=41.6517269,2.2493079&amp;hl=ca&amp;z=15&amp;output=embed"
             loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
     <div id="map-content-wrapper" class="container pointer-events-none">
         <div class="row">
             <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6">
                 <div class="text-center">
                     <div id="btn-show-content" class="toggle-map-content pointer-events-auto">
-                        <i class="fa fa-info-circle"></i>&nbsp;&nbsp; Show info
+                        <i class="fa fa-info-circle"></i>&nbsp;&nbsp; Mostra la informació
                     </div>
                 </div>
                 <div id="map-content" class="pointer-events-auto">
                     <div class="row">
                         <div class="col-md-6">
                             <!-- Catalan "Masia", no accent — our spelling, not the venue's own
-                                 "Masía". Deliberate, so the whole venue line reads as Catalan
-                                 alongside "Camí" and "Vallès". Keep the three copies in sync:
-                                 here, the iframe title at :418, and js/scripts.js:196. -->
+                                 "Masía". Keep the four copies in sync: here, the iframe title
+                                 above, and index.html:431 / js/scripts.js:196. -->
                             <h5>Masia Can Plantada</h5>
-                            <p>Camí de Can Plantada, s/n, L'Ametlla del Vallès, Barcelona 08480, Spain</p>
+                            <p>Camí de Can Plantada, s/n, L'Ametlla del Vallès, Barcelona 08480</p>
                         </div>
                         <div class="col-md-6">
                             <h5>Peter Brosten</h5>
@@ -450,11 +411,11 @@
                         <div class="col-md-6" style="padding: 5px;">
                             <a class="btn btn-fill btn-small" target="_blank" rel="noopener"
                                href="https://www.google.com/maps/dir/?api=1&amp;destination=41.6517269,2.2493079"><i
-                                    class="fa fa-location-arrow"></i>&nbsp;&nbsp;Get directions</a>
+                                    class="fa fa-location-arrow"></i>&nbsp;&nbsp;Com arribar-hi</a>
                         </div>
                         <div class="col-md-6" style="padding: 5px;">
-                            <a class="btn btn-accent btn-small" id="btn-show-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show
-                                map</a>
+                            <a class="btn btn-accent btn-small" id="btn-show-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Mostra
+                                el mapa</a>
                         </div>
                     </div>
                 </div>
@@ -469,11 +430,11 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Tanca"><span>&times;</span>
                     </button>
                     <div class="section-padding">
-                        <h3>Thank you!</h3>
-                        <p>We are glad to see you join us on our big day.</p>
+                        <h3>Gràcies!</h3>
+                        <p>Estem contents que ens acompanyis en el nostre gran dia.</p>
                     </div>
                 </div>
             </div><!-- /.modal-content -->
@@ -483,8 +444,8 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6 col-md-offset-3">
-                <img src="img/headers/5.png" class="wordmark" alt="Can we count on you?">
-                <p>We would greatly appreciate if you could RSVP before Dec 31st 2026</p>
+                <img src="../img/headers/5.png" class="wordmark" alt="Podem comptar amb tu?">
+                <p>Us agrairíem molt que confirméssiu l'assistència abans del 31 de desembre del 2026</p>
                 <!-- Field names come from the Google Form. Do NOT rename them by hand: a wrong
                      entry.NNN is silently discarded by Google, not rejected. Re-derive them with
                      "Get pre-filled link" after any edit to the Form.
@@ -499,16 +460,16 @@
                                      ("guest@example"), Google's email question rejects it, and
                                      under no-cors that rejection is invisible. Requires a TLD. -->
                                 <i class="fa fa-envelope"></i><input type="email" name="emailAddress"
-                                                                     placeholder="Your email"
+                                                                     placeholder="El teu correu electrònic"
                                                                      pattern="[^@\s]+@[^@\s]+\.[A-Za-z]{2,}"
-                                                                     title="Please enter a full email address"
+                                                                     title="Introdueix una adreça de correu completa"
                                                                      required>
                             </div>
                         </div>
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-user"></i><input name="entry.459759396"
-                                                                 placeholder="Your name"
+                                                                 placeholder="El teu nom"
                                                                  required>
                             </div>
                         </div>
@@ -516,12 +477,14 @@
                     <div class="row">
                         <div class="col-md-12">
                             <div class="form-input-group">
-                                <!-- option values must match the Form's option text exactly -->
+                                <!-- ⚠️ Only the visible label is translated. The value= strings must
+                                     stay the Google Form's exact English option text or the answer
+                                     is silently discarded. -->
                                 <i class="fa fa-check"></i><select name="entry.877086558" required>
-                                    <option value="" disabled selected>Will you be joining us?</option>
-                                    <option value="Yes, I'll be there">Yes, I'll be there</option>
-                                    <option value="Sorry, can't make it">Sorry, can't make it</option>
-                                    <option value="I'm not sure">I'm not sure</option>
+                                    <option value="" disabled selected>Ens acompanyaràs?</option>
+                                    <option value="Yes, I'll be there">Sí, hi seré</option>
+                                    <option value="Sorry, can't make it">Ho sento, no hi podré anar</option>
+                                    <option value="I'm not sure">Encara no ho sé</option>
                                 </select>
                             </div>
                         </div>
@@ -530,7 +493,7 @@
                         <div class="col-md-12">
                             <div class="form-input-group tall">
                                 <i class="fa fa-users"></i><textarea name="entry.1498135098"
-                                                                     placeholder="Full names of everyone in your party, including yourself"
+                                                                     placeholder="Nom i cognoms de tothom qui ve amb tu, tu inclòs"
                                                                      required></textarea>
                             </div>
                         </div>
@@ -539,7 +502,7 @@
                         <div class="col-md-12">
                             <div class="form-input-group tall">
                                 <i class="fa fa-cutlery"></i><textarea name="entry.1009027462"
-                                                                       placeholder="Any dietary restrictions (per person if needed)"></textarea>
+                                                                       placeholder="Al·lèrgies o restriccions alimentàries (per persona si cal)"></textarea>
                             </div>
                         </div>
                     </div>
@@ -547,8 +510,8 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-bed"></i><select name="entry.1306621828" required>
-                                    <option value="" disabled selected>Need accommodation?</option>
-                                    <option value="Yes">Yes</option>
+                                    <option value="" disabled selected>Necessites allotjament?</option>
+                                    <option value="Yes">Sí</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
@@ -556,8 +519,8 @@
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
                                 <i class="fa fa-bus"></i><select name="entry.234007366">
-                                    <option value="" selected>Transport to the venue?</option>
-                                    <option value="Yes">Yes</option>
+                                    <option value="" selected>Vols transport fins al lloc?</option>
+                                    <option value="Yes">Sí</option>
                                     <option value="No">No</option>
                                 </select>
                             </div>
@@ -570,20 +533,20 @@
                         <div class="col-md-12">
                             <div class="form-input-group">
                                 <i class="fa fa-key"></i><input id="invite_code"
-                                                                placeholder="Invitation code (check your save the date)"
+                                                                placeholder="Codi d'invitació (el trobaràs al save the date)"
                                                                 autocomplete="off" required>
                             </div>
                         </div>
                     </div>
-                    <!-- "en" here, "ca" in cat/index.html -->
-                    <input type="hidden" name="entry.104865033" value="en">
+                    <!-- "ca" here, "en" in the root index.html -->
+                    <input type="hidden" name="entry.104865033" value="ca">
                     <!-- asks Google to email the guest a copy of their response -->
                     <input type="hidden" name="emailReceipt" value="true">
                     <div class="row">
                         <div class="col-md-12" id="alert-wrapper"></div>
                     </div>
                     <button class="btn-fill rsvp-btn">
-                        Yes, that's me!
+                        Sí, sóc jo!
                     </button>
                 </form>
             </div>
@@ -596,28 +559,31 @@
         <div class="row">
             <div class="col-sm-12 text-center content">
                 <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <p>Crafted by Peter with lots of <span class="fa fa-heart pulse2"></span> for Elena</p>
-                <p class="credit">A special thanks to <a href="https://julia-quintana.com/">Júlia Quintana</a> for the custom logo and headers</p>
+                <p>Fet per en Peter amb molt d'<span class="fa fa-heart pulse2"></span> per a l'Elena</p>
+                <p class="credit">Un agraïment especial a <a href="https://julia-quintana.com/">Júlia Quintana</a> pel logotip i les capçaleres fetes a mida</p>
                 <!-- Required by the image licences. All three banner photos are displayed, so all
                      three are credited — see site-wiki/content-and-assets.md -->
-                <p class="credit">Photo credits:
+                <p class="credit">Crèdits fotogràfics:
                     <a href="https://commons.wikimedia.org/wiki/File:Vall%C3%A8s_des_de_Cingles_de_Bert%C3%AD.jpg">Vallès
-                        des de Cingles de Bertí</a> and <a
+                        des de Cingles de Bertí</a> i <a
                             href="https://commons.wikimedia.org/wiki/File:Posta_de_sol_des_de_Cingles_de_Bert%C3%AD.jpg">Posta
-                        de sol des de Cingles de Bertí</a> by Mtpla, <a
+                        de sol des de Cingles de Bertí</a> de Mtpla, <a
                             href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">CC BY-SA 3.0</a>;
                     <a href="https://commons.wikimedia.org/wiki/File:Cingles_de_Bert%C3%AD_-_panoramio_(1).jpg">Cingles
-                        de Bertí</a> by Jorge Franganillo, <a
+                        de Bertí</a> de Jorge Franganillo, <a
                             href="https://creativecommons.org/licenses/by/3.0/" rel="license">CC BY 3.0</a>.</p>
             </div>
         </div>
     </div>
 </footer>
-<script src="js/vendor/jquery-1.11.2.min.js"></script>
+<!-- Must come before scripts.min.js: it picks the Catalan strings for the calendar event and the
+     RSVP alerts. The root index.html omits it — English is the default branch. -->
+<script>window.LANG = 'ca';</script>
+<script src="../js/vendor/jquery-1.11.2.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/vendor/ouical.js"></script>
-<script src="js/scripts.min.js"></script>
+<script src="../js/vendor/bootstrap.min.js"></script>
+<script src="../js/vendor/ouical.js"></script>
+<script src="../js/scripts.min.js"></script>
 <script>
     // Pin the hero content a gap below the header's white rule.
     (function () {
@@ -652,33 +618,34 @@
             caption = document.querySelector('.collage-caption'),
             heading = document.querySelector('#pictures h3');
 
-        // Caption per photo, keyed by filename.
+        // Caption per photo, keyed by filename. Catalan copies of the root page's captions —
+        // the keys are filenames and must stay byte-identical to the ones in index.html.
         var CAPTIONS = {
-            '00-costa-brava-1.jpg': 'So here are 25 thousand from our story so far.',
-            '01-sant-jordi.jpg': 'We have grown through sharing our cultures.',
-            '02-formenterra.jpg': 'Explored sand-filled islands',
-            '03-montserrat.jpg': 'and mountain tops.',
-            '04-garmisch-2.JPG': 'Always being each other\'s best friend.',
-            '05-christmas.jpg': 'Even if we need to share with our little fur ball.',
-            '06-costa-brava-2.jpg': 'Peter found a love of Costa Brava',
-            '12-smores.jpg': 'and Elena a joy in late night s\'mores.',
-            '15-peratallada.JPG': 'We loved sharing moments to remeber.',
-            '25-go-nats.jpg': 'We\'ve watched wild baseball games,',
-            '25-runnin-1.jpg': 'run international races,',
-            '26-quaker-lake.jpg': 'chilled on the dock,',
-            '30-Rome.jpg': 'and travelled the world.',
-            '35-runnin-2.jpg': 'All of it, always together.',
-            '45-viena.jpg': 'We knew our love was strong',
-            '48-home-deed.jpg': 'and after years of saving',
-            '48-keys.jpg': 'we found our home.',
-            '49-home-reno.jpg': 'Then came the "fun" part',
-            '49-pizza-date.jpg': 'and after a few pizza dates on the floor,',
-            '50-moving.jpg': 'we were ready to start our next step',
-            '51-cuddles.jpg': 'together.',
-            '60-port-del-compte.jpg': 'A couple months passed',
-            '65-london.jpg': 'of enjoying our new life together.',
-            '98-paretallada-2.jpg': 'Peter only had one question left',
-            '99-engagement.jpg': 'and Elena said yes!'
+            '00-costa-brava-1.jpg': 'Doncs aquí en tens 25 mil de la nostra història fins ara.',
+            '01-sant-jordi.jpg': 'Hem crescut compartint les nostres cultures.',
+            '02-formenterra.jpg': 'Hem explorat illes plenes de sorra',
+            '03-montserrat.jpg': 'i cims de muntanya.',
+            '04-garmisch-2.JPG': 'Sempre sent el millor amic de l\'altre.',
+            '05-christmas.jpg': 'Encara que ho haguem de compartir amb la nostra bola de pèl.',
+            '06-costa-brava-2.jpg': 'En Peter es va enamorar de la Costa Brava',
+            '12-smores.jpg': 'i l\'Elena dels s\'mores de matinada.',
+            '15-peratallada.JPG': 'Ens encanta compartir moments per recordar.',
+            '25-go-nats.jpg': 'Hem vist partits de beisbol bojos,',
+            '25-runnin-1.jpg': 'hem corregut curses internacionals,',
+            '26-quaker-lake.jpg': 'hem fet el mandra al moll,',
+            '30-Rome.jpg': 'i hem viatjat pel món.',
+            '35-runnin-2.jpg': 'Tot plegat, sempre junts.',
+            '45-viena.jpg': 'Sabíem que el nostre amor era fort',
+            '48-home-deed.jpg': 'i després d\'anys estalviant',
+            '48-keys.jpg': 'vam trobar la nostra llar.',
+            '49-home-reno.jpg': 'Llavors va arribar la part «divertida»',
+            '49-pizza-date.jpg': 'i després d\'uns quants sopars de pizza a terra,',
+            '50-moving.jpg': 'ja estàvem a punt per fer el pas següent',
+            '51-cuddles.jpg': 'junts.',
+            '60-port-del-compte.jpg': 'Van passar un parell de mesos',
+            '65-london.jpg': 'gaudint de la nostra nova vida junts.',
+            '98-paretallada-2.jpg': 'A en Peter només li quedava una pregunta',
+            '99-engagement.jpg': 'i l\'Elena va dir que sí!'
         };
         function captionOf(img) {
             return CAPTIONS[img.getAttribute('src').split('/').pop()] || '';

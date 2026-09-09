@@ -33,7 +33,13 @@ gulp.task('minify-js', function () {
         .pipe(gulp.dest('./js'));
 });
 
-// Rebuild the gallery <img> list in index.html from whatever is in img/gallery/.
+// Both language pages carry the same photo list; cat/ needs a ../ on every src.
+var GALLERY_PAGES = [
+    {file: './index.html', prefix: 'img/gallery/'},
+    {file: './cat/index.html', prefix: '../img/gallery/'}
+];
+
+// Rebuild the gallery <img> list in both index.html files from whatever is in img/gallery/.
 // A static site cannot list a directory at runtime, so the filenames have to be baked into
 // the HTML. Run this after adding or removing photos; it rewrites everything between the
 // gallery:start / gallery:end markers, so don't hand-edit inside them.
@@ -52,28 +58,32 @@ gulp.task('gallery', function (done) {
         return a.localeCompare(b, 'en', {numeric: true});
     });
 
-    var html = fs.readFileSync('./index.html', 'utf8');
-    var start = html.indexOf(GALLERY_START);
-    var end = html.indexOf(GALLERY_END);
-    if (start < 0 || end < 0 || end < start) {
-        done(new Error('gallery markers missing or out of order in index.html'));
-        return;
+    for (var i = 0; i < GALLERY_PAGES.length; i++) {
+        var page = GALLERY_PAGES[i];
+        var html = fs.readFileSync(page.file, 'utf8');
+        var start = html.indexOf(GALLERY_START);
+        var end = html.indexOf(GALLERY_END);
+        if (start < 0 || end < 0 || end < start) {
+            done(new Error('gallery markers missing or out of order in ' + page.file));
+            return;
+        }
+
+        var tags = files.map(function (f) {
+            // Alt text from the filename: "costa-brava-1.jpg" -> "Costa brava 1". Better than
+            // twenty identical alts, and it costs nothing to keep accurate.
+            var alt = f.replace(IMAGE_EXT, '').replace(/[-_]+/g, ' ');
+            alt = alt.charAt(0).toUpperCase() + alt.slice(1);
+            return INDENT + '<img src="' + page.prefix + f + '" alt="' + alt + '" loading="lazy">';
+        }).join('\n');
+
+        fs.writeFileSync(page.file,
+            html.slice(0, start + GALLERY_START.length) + '\n' +
+            (tags ? tags + '\n' : '') + INDENT +
+            html.slice(end));
     }
 
-    var tags = files.map(function (f) {
-        // Alt text from the filename: "costa-brava-1.jpg" -> "Costa brava 1". Better than
-        // twenty identical alts, and it costs nothing to keep accurate.
-        var alt = f.replace(IMAGE_EXT, '').replace(/[-_]+/g, ' ');
-        alt = alt.charAt(0).toUpperCase() + alt.slice(1);
-        return INDENT + '<img src="img/gallery/' + f + '" alt="' + alt + '" loading="lazy">';
-    }).join('\n');
-
-    fs.writeFileSync('./index.html',
-        html.slice(0, start + GALLERY_START.length) + '\n' +
-        (tags ? tags + '\n' : '') + INDENT +
-        html.slice(end));
-
-    console.log('gallery: ' + files.length + ' photo(s) from ' + GALLERY_DIR);
+    console.log('gallery: ' + files.length + ' photo(s) from ' + GALLERY_DIR +
+        ' into ' + GALLERY_PAGES.length + ' page(s)');
     done();
 });
 

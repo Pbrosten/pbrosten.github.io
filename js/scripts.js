@@ -1,3 +1,21 @@
+// ponytail: seven strings, not worth a string table or a fetch. cat/index.html sets
+// window.LANG='ca' before this file; the root page omits it and falls through to English.
+var T = (window.LANG === 'ca') ? {
+    calTitle: "El casament d'en Peter i l'Elena",
+    calDescription: "Estem desitjant veure't el nostre gran dia. Per a qualsevol dubte, contacta amb en Peter Brosten al \+34 641 93 62 45.",
+    addToCal: 'Afegeix-ho al calendari',
+    badCode: "<strong>Ho sentim!</strong> Aquest codi d'invitació no és correcte; comprova el que hi ha al teu save the date.",
+    saving: '<strong>Un moment!</strong> Estem desant les teves dades.',
+    netError: "<strong>Ho sentim!</strong> No hem pogut connectar amb el servidor; comprova la connexió i torna-ho a provar."
+} : {
+    calTitle: "Peter and Elena's Wedding",
+    calDescription: "We can't wait to see you on our big day. For any queries or issues, reach out to Peter Brosten at \+34 641 93 62 45.",
+    addToCal: 'Add to Calendar',
+    badCode: "<strong>Sorry!</strong> That invite code isn't right; please check the one on your save the date.",
+    saving: '<strong>Just a sec!</strong> We are saving your details.',
+    netError: "<strong>Sorry!</strong> We couldn't reach the server; please check your connection and try again."
+};
+
 $(document).ready(function () {
 
     /***************** Waypoints ******************/
@@ -122,6 +140,8 @@ $(document).ready(function () {
     });
 
     /********************** Add to Calendar **********************/
+    // Read by js/vendor/ouical.js for its button label — the one user-facing string it owns.
+    window.OUICAL_ADD_LABEL = T.addToCal;
     var myCalendar = createCalendar({
         options: {
             class: '',
@@ -130,7 +150,7 @@ $(document).ready(function () {
         },
         data: {
             // Event title
-            title: "Peter and Elena's Wedding",
+            title: T.calTitle,
 
             // Barcelona time (+02:00 = CEST in September). Keep the offset: without it the
             // string is parsed in the *guest's* timezone and everyone abroad gets the wrong hour.
@@ -142,7 +162,7 @@ $(document).ready(function () {
             address: 'Masia Can Plantada, L\'Ametlla del Vallès',
 
             // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, reach out to Peter Brosten at \+34 641 93 62 45."
+            description: T.calDescription
         }
     });
 
@@ -160,11 +180,11 @@ $(document).ready(function () {
         // Entries must be lowercase; guests' input is trimmed and lowercased before comparing.
         var CODES = ['pe2027'];
         if (CODES.indexOf($('#invite_code').val().trim().toLowerCase()) === -1) {
-            $('#alert-wrapper').html(alert_markup('danger', "<strong>Sorry!</strong> That invite code isn't right; please check the one on your save the date."));
+            $('#alert-wrapper').html(alert_markup('danger', T.badCode));
             return;
         }
 
-        $('#alert-wrapper').html(alert_markup('info', '<strong>Just a sec!</strong> We are saving your details.'));
+        $('#alert-wrapper').html(alert_markup('info', T.saving));
         btn.prop('disabled', true);
 
         // ponytail: no-cors means we cannot read Google's reply, so a Google-side rejection
@@ -178,7 +198,7 @@ $(document).ready(function () {
             $('#alert-wrapper').html('');
             $('#rsvp-modal').modal('show');
         }).catch(function () {
-            $('#alert-wrapper').html(alert_markup('danger', "<strong>Sorry!</strong> We couldn't reach the server; please check your connection and try again."));
+            $('#alert-wrapper').html(alert_markup('danger', T.netError));
         }).finally(function () {
             btn.prop('disabled', false);
         });

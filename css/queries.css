@@ -165,6 +165,14 @@
         transition-delay: 0.2s
     }
 
+    /* The language switcher — 5th item since the bilingual split. */
+    nav ul.primary-nav li:nth-child(5) {
+        -moz-transition-delay: 0.25s;
+        -o-transition-delay: 0.25s;
+        -webkit-transition-delay: 0.25s;
+        transition-delay: 0.25s
+    }
+
     nav ul.member-actions li:first-child {
         -moz-transition-delay: 0.25s;
         -o-transition-delay: 0.25s;
