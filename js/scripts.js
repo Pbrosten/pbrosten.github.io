@@ -142,7 +142,7 @@ $(document).ready(function () {
             address: 'Masia Can Plantada, L\'Ametlla del Vallès',
 
             // Event Description
-            description: "We can't wait to see you on our big day. For any queries or issues, reach out to Peter Brosten at +34 641 93 62 45."
+            description: "We can't wait to see you on our big day. For any queries or issues, reach out to Peter Brosten at \+34 641 93 62 45."
         }
     });
 
@@ -160,7 +160,7 @@ $(document).ready(function () {
         // Entries must be lowercase; guests' input is trimmed and lowercased before comparing.
         var CODES = ['pe2027'];
         if (CODES.indexOf($('#invite_code').val().trim().toLowerCase()) === -1) {
-            $('#alert-wrapper').html(alert_markup('danger', "<strong>Sorry!</strong> That invite code isn't right &mdash; please check the one on your save the date."));
+            $('#alert-wrapper').html(alert_markup('danger', "<strong>Sorry!</strong> That invite code isn't right; please check the one on your save the date."));
             return;
         }
 

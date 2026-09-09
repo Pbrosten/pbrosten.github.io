@@ -84,7 +84,10 @@
         var styles = document.createElement('style');
         styles.id = 'ouical-css';
 
-        styles.innerHTML = "#add-to-calendar-label{margin-bottom:10px;cursor:pointer}.add-to-calendar a{margin:3px}.add-to-calendar-checkbox~a{display:none}.add-to-calendar-checkbox:checked~a{display:block;}input[type=checkbox].add-to-calendar-checkbox{display:none}";
+        // Upstream had `display:block` on the revealed links, which stretched each <a> to the
+        // full column width — clickable far outside the words. width:fit-content + auto margins
+        // keeps them stacked and centred, with the hit area on the text only.
+        styles.innerHTML = "#add-to-calendar-label{margin-bottom:10px;cursor:pointer}.add-to-calendar a{margin:3px}.add-to-calendar-checkbox~a{display:none}.add-to-calendar-checkbox:checked~a{display:block;width:fit-content;margin:3px auto}input[type=checkbox].add-to-calendar-checkbox{display:none}";
 
         return styles;
     };

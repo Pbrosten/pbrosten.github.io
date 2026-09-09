@@ -388,23 +388,11 @@
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                     </button>
                     <h3 class="text-center section-padding">Dress Codes</h3>
-                    <h5>[EVENT NAME 1] <span class="time">[TIME]</span></h5>
+                    <h5>[EVENT NAME 1]</h5>
                     <p>
                         <strong>[DRESS CODE THEME]</strong>
                         <br>
                         [Describe dress code expectations for this event. Include suggestions for ladies and gentlemen. You can add links to Pinterest boards or other style inspiration resources as needed.]
-                    </p>
-                    <h5>[EVENT NAME 2] <span class="time">[TIME]</span></h5>
-                    <p>
-                        <strong>[DRESS CODE THEME]</strong>
-                        <br>
-                        [Describe dress code expectations for this event with specific suggestions and inspiration links if available.]
-                    </p>
-                    <h5>[MAIN EVENT NAME] <span class="time">[TIME]</span></h5>
-                    <p>
-                        <strong>[DRESS CODE THEME]</strong>
-                        <br>
-                        [Describe the main event's dress code with detailed suggestions for both traditional and contemporary options. Include style inspiration links.]
                     </p>
                 </div>
             </div><!-- /.modal-content -->
@@ -498,8 +486,13 @@
                     <div class="row">
                         <div class="col-md-6 col-sm-6">
                             <div class="form-input-group">
+                                <!-- pattern, not just type=email: HTML5 accepts a dotless domain
+                                     ("guest@example"), Google's email question rejects it, and
+                                     under no-cors that rejection is invisible. Requires a TLD. -->
                                 <i class="fa fa-envelope"></i><input type="email" name="emailAddress"
                                                                      placeholder="Your email"
+                                                                     pattern="[^@\s]+@[^@\s]+\.[A-Za-z]{2,}"
+                                                                     title="Please enter a full email address"
                                                                      required>
                             </div>
                         </div>
