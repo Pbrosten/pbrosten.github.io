@@ -45,6 +45,14 @@ p {
   padding-bottom: 20px;
 }
 
+// ponytail: desktop-only bump; queries.css scales everything below 992px off the 15px base
+@media (min-width: 992px) {
+  p {
+    font-size: 20px;
+    line-height: 32px;
+  }
+}
+
 h1 {
   font-size: $font-size-h1;
 }

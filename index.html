@@ -7,9 +7,10 @@
 <html class="no-js lt-ie9" lang="en"> <![endif]-->
 <!--[if gt IE 8]><!-->
 <html class="no-js" lang="en"> <!--<![endif]-->
+
 <head>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <!-- Names first: a browser tab truncates to roughly the first 15 characters, so this reads
          as "Peter & Elena…" where it matters most, and still carries the date in a bookmark. -->
     <title>Peter &amp; Elena &middot; 10 September 2027</title>
@@ -64,15 +65,30 @@
            term in that stack is capped against svh: the taller the window, the more it may use.
            Desktop is unchanged (each clamp sits at its max by ~1000px tall). Keep the vh line
            before each svh one — browsers without svh take the fallback. */
-        :root { --logo-w: clamp(40px, 6.5vh, 68px); --nav-gap: 75px; }
-        :root { --logo-w: clamp(40px, 6.5svh, 68px); }
+        :root {
+            --logo-w: clamp(40px, 6.5vh, 68px);
+            --nav-gap: 75px;
+        }
 
-        .wordmark { display: block; margin: 0 auto 20px; width: auto !important; height: auto !important; max-width: 100%; max-height: 56px; }
+        :root {
+            --logo-w: clamp(40px, 6.5svh, 68px);
+        }
+
+        .wordmark {
+            display: block;
+            margin: 0 auto 20px;
+            width: auto !important;
+            height: auto !important;
+            max-width: 100%;
+            max-height: 56px;
+        }
+
         .hero-bg {
             background-image:
                 linear-gradient(rgba(0, 0, 0, .35) 0%, rgba(0, 0, 0, .1) 40%, rgba(0, 0, 0, .45) 100%),
                 url("img/hero-3.jpg");
         }
+
         .hero {
             background-position: center 25%;
             min-height: 100vh;
@@ -80,33 +96,78 @@
         }
 
         /* Overrides header .logo img{height:19px} in styles.min.css — same specificity, later in source. */
-        header .logo img { width: var(--logo-w); height: auto; }
-        header { padding-top: clamp(8px, 1.8vh, 20px) !important; padding-bottom: clamp(8px, 1.8vh, 20px) !important; }
-        header { padding-top: clamp(8px, 1.8svh, 20px) !important; padding-bottom: clamp(8px, 1.8svh, 20px) !important; }
-        header .navicon { top: 50% !important; transform: translateY(-50%); }
+        header .logo img {
+            width: var(--logo-w);
+            height: auto;
+        }
+
+        header {
+            padding-top: clamp(8px, 1.8vh, 20px) !important;
+            padding-bottom: clamp(8px, 1.8vh, 20px) !important;
+        }
+
+        header {
+            padding-top: clamp(8px, 1.8svh, 20px) !important;
+            padding-bottom: clamp(8px, 1.8svh, 20px) !important;
+        }
+
+        header .navicon {
+            top: 50% !important;
+            transform: translateY(-50%);
+        }
 
         @media screen and (min-width: 992px) {
-            header .header-content { display: flex; align-items: center; }
-            header .member-actions { top: 50% !important; transform: translateY(-50%); }
+            header .header-content {
+                display: flex;
+                align-items: center;
+            }
 
-            header .member-actions { visibility: hidden; opacity: 0; }
-            .navigation.fixed header .member-actions { visibility: visible; opacity: 1; }
+            header .member-actions {
+                top: 50% !important;
+                transform: translateY(-50%);
+            }
 
-            header ul.primary-nav { margin-left: 0; }
-            header .header-nav { flex: 1 1 auto; display: flex; }
+            header .member-actions {
+                visibility: hidden;
+                opacity: 0;
+            }
+
+            .navigation.fixed header .member-actions {
+                visibility: visible;
+                opacity: 1;
+            }
+
+            header ul.primary-nav {
+                margin-left: 0;
+            }
+
+            header .header-nav {
+                flex: 1 1 auto;
+                display: flex;
+            }
+
             header .header-nav::before,
             header .header-nav::after {
                 content: '';
                 flex: 1 0 var(--nav-gap);
                 transition: flex-grow 300ms ease-in-out;
             }
-            header .header-nav::after { flex-basis: calc(var(--nav-gap) + var(--logo-w)); }
-            .navigation.fixed header .header-nav::before { flex-grow: 0; }
+
+            header .header-nav::after {
+                flex-basis: calc(var(--nav-gap) + var(--logo-w));
+            }
+
+            .navigation.fixed header .header-nav::before {
+                flex-grow: 0;
+            }
         }
 
         @media (prefers-reduced-motion: reduce) {
+
             header .header-nav::before,
-            header .header-nav::after { transition: none; }
+            header .header-nav::after {
+                transition: none;
+            }
         }
 
         .hero .hero-content img {
@@ -131,127 +192,146 @@
             margin: 0 0 clamp(8px, 2svh, 18px);
             text-shadow: 0 1px 12px rgba(0, 0, 0, .55);
         }
-        .hero-meta span { opacity: .55; padding: 0 .4em; }
+
+        .hero-meta span {
+            opacity: .55;
+            padding: 0 .4em;
+        }
 
         /* Under ~400px the venue line needs a third row, and that row lands on Elena's hat.
            Tighter tracking keeps it to two. */
         @media screen and (max-width: 400px) {
-            .hero-meta { letter-spacing: .1em; }
+            .hero-meta {
+                letter-spacing: .1em;
+            }
         }
+
         @media screen and (max-width: 340px) {
-            .hero-meta { font-size: 12px; }
+            .hero-meta {
+                font-size: 12px;
+            }
         }
 
         /* Landscape phones (iPhone SE is 667x375): even scaled down, nav + date + wordmark is
            taller than the strip of canyon above the couple. The date line goes — the invitation
            section right below repeats it — rather than let the wordmark sit on their heads. */
         @media screen and (max-height: 560px) and (max-width: 900px) {
-            .hero-meta { display: none; }
+            .hero-meta {
+                display: none;
+            }
         }
     </style>
 </head>
+
 <body id="top">
-<section class="hero hero-bg">
-    <section class="navigation">
-        <header>
-            <div class="header-content">
-                <div class="logo"><a href="#"><img src="img/Logo-trim.png" alt="Logo"></a></div>
-                <div class="header-nav">
-                    <nav>
-                        <ul class="primary-nav">
-                            <li><a href="#intro">How We Met</a></li>
-                            <li><a href="#pictures">Our Story</a></li>
-                            <li><a href="#events">The Event</a></li>
-                            <li><a href="#map">The Venue</a></li>
-                            <!-- Relative, not /cat/, so the switcher also works opening the files
+    <section class="hero hero-bg">
+        <section class="navigation">
+            <header>
+                <div class="header-content">
+                    <div class="logo"><a href="#"><img src="img/Logo-trim.png" alt="Logo"></a></div>
+                    <div class="header-nav">
+                        <nav>
+                            <ul class="primary-nav">
+                                <li><a href="#intro">How We Met</a></li>
+                                <li><a href="#pictures">Our Story</a></li>
+                                <li><a href="#events">The Event</a></li>
+                                <li><a href="#map">The Venue</a></li>
+                                <!-- Relative, not /cat/, so the switcher also works opening the files
                                  straight off disk. No auto-redirect by navigator.language. -->
-                            <li><a href="cat/" lang="ca" hreflang="ca">Català</a></li>
-                        </ul>
-                        <ul class="member-actions">
-                            <!-- <li><a href="#map" class="login">Venue</a></li> -->
-                            <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
-                        </ul>
-                    </nav>
+                                <li><a href="cat/" lang="ca" hreflang="ca">Català</a></li>
+                            </ul>
+                            <ul class="member-actions">
+                                <!-- <li><a href="#map" class="login">Venue</a></li> -->
+                                <li><a href="#rsvp" class="btn-white btn-small">RSVP</a></li>
+                            </ul>
+                        </nav>
+                    </div>
+                    <div class="navicon">
+                        <a class="nav-toggle" href="#"><span></span></a>
+                    </div>
                 </div>
-                <div class="navicon">
-                    <a class="nav-toggle" href="#"><span></span></a>
+            </header>
+        </section>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-10 col-md-offset-1">
+                    <div class="hero-content text-center">
+                        <p class="hero-meta">10 September 2027 <span>&middot;</span> L'Ametlla del Vallès, Barcelona</p>
+                        <img src="img/PE.png" alt="Peter &amp; Elena">
+                    </div>
                 </div>
             </div>
-        </header>
+            <div class="row">
+                <div class="col-sm-4 hidden-xs"></div>
+                <div class="col-sm-4 hidden-xs text-center"><a href="#rsvp"
+                        class="btn btn-accent btn-large rsvp-btn">RSVP</a></div>
+                <div class="col-sm-4 hidden-xs"></div>
+            </div>
+        </div>
+        <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
     </section>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-10 col-md-offset-1">
-                <div class="hero-content text-center">
-                    <p class="hero-meta">10 September 2027 <span>&middot;</span> L'Ametlla del Vallès, Barcelona</p>
-                    <img src="img/PE.png" alt="Peter &amp; Elena">
+    <!--Invitation Section-->
+    <section id="invitation" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="img/headers/1.png" class="wordmark" alt="We are getting married!">
+                    <p>Join us in Barcelona on September 10th 2027 to celebrate.</p>
                 </div>
             </div>
         </div>
-        <div class="row">
-            <div class="col-sm-4 hidden-xs"></div>
-            <div class="col-sm-4 hidden-xs text-center"><a href="#rsvp"
-                                                           class="btn btn-accent btn-large rsvp-btn">RSVP</a></div>
-            <div class="col-sm-4 hidden-xs"></div>
-        </div>
-    </div>
-    <div class="down-arrow floating-arrow"><a href="#invitation"><i class="fa fa-angle-down"></i></a></div>
-</section>
-<!--Invitation Section-->
-<section id="invitation" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="img/headers/1.png" class="wordmark" alt="We are getting married!">
-                <p>Join us in Barcelona on September 10th 2027 to celebrate.</p>
-            </div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<!--Intro Section-->
-<section id="intro">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="img/headers/2.png" class="wordmark" alt="How we met">
+    <!--Intro Section-->
+    <section id="intro">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="img/headers/2.png" class="wordmark" alt="How we met">
+                </div>
+            </div>
+            <div class="row intro-row">
+                <div class="col-md-3 hidden-sm hidden-xs"><img src="img/space-needle.png" class="wp1"
+                        alt="Space Needle, Seattle"></div>
+                <div class="col-md-6">
+                    <p>Peter & Elena first met in Seattle in the fall of 2021. Elena had recently begun a year as an au
+                        pair, embarking on her first experience living abroad, far from Catalunya. Having just returned
+                        from two years in Norway, Peter knew all too well the courage it takes to move to a new country
+                        and embrace a different culture.</p>
+                    <p>What began as a friendship soon blossomed into something more. When Elena’s year in Seattle came
+                        to an end and moved back to Catalunya, they decided to give a long-distance relationship a try.
+                        For the next six months, they made the distance work, until it was no longer necessary. In
+                        September 2022, Peter packed his bags and moved to Barcelona.</p>
+                    <p>Four years later, they are still joyfully in love and finally have an answer to the question
+                        their friends and family have been asking ever since:</p>
+                    <p>September 10th, 2027. That’s when we’re getting married.</p>
+                </div>
+                <div class="col-md-3 hidden-sm hidden-xs"><img src="img/sagrada-familia.png" class="wp2"
+                        alt="Sagrada Família, Barcelona"></div>
+            </div>
+            <div class="row">
+                <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/space-needle.png"
+                        class="wp8" alt=""></div>
+                <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/sagrada-familia.png"
+                        class="wp9" alt=""></div>
             </div>
         </div>
-        <div class="row intro-row">
-            <div class="col-md-3 hidden-sm hidden-xs"><img src="img/space-needle.png" class="wp1"
-                                                          alt="Space Needle, Seattle"></div>
-            <div class="col-md-6">
-                <p>Peter & Elena first met in Seattle in the fall of 2021. Elena had recently begun a year as an au pair, embarking on her first experience living abroad, far from Catalunya. Having just returned from two years in Norway, Peter knew all too well the courage it takes to move to a new country and embrace a different culture.</p>
-                <p>What began as a friendship soon blossomed into something more. When Elena’s year in Seattle came to an end and moved back to Catalunya, they decided to give a long-distance relationship a try. For the next six months, they made the distance work, until it was no longer necessary. In September 2022, Peter packed his bags and moved to Barcelona.</p>
-                <p>Four years later, they are still joyfully in love and finally have an answer to the question their friends and family have been asking ever since:</p>
-                <p>September 10th, 2027. That’s when we’re getting married.</p>
-            </div>
-            <div class="col-md-3 hidden-sm hidden-xs"><img src="img/sagrada-familia.png" class="wp2"
-                                                          alt="Sagrada Família, Barcelona"></div>
-        </div>
-        <div class="row">
-            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/space-needle.png"
-                                                                                  class="wp8" alt=""></div>
-            <div class="col-sm-4 col-sm-push-2 col-xs-6 hidden-md hidden-lg"><img src="img/sagrada-familia.png"
-                                                                                  class="wp9" alt=""></div>
-        </div>
-    </div>
-</section>
+    </section>
 
-<section id="pictures" class="section-padding">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12 text-center">
-                <img src="img/headers/3.png" class="wordmark" alt="A picture is worth a thousand words">
-                <p class="collage-caption" aria-live="polite"></p>
+    <section id="pictures" class="section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 text-center">
+                    <img src="img/headers/3.png" class="wordmark" alt="A picture is worth a thousand words">
+                    <p class="collage-caption" aria-live="polite"></p>
+                </div>
             </div>
-        </div>
-        <div class="collage">
-            <button class="collage-nav collage-prev" type="button" aria-label="Previous photo">
-                <i class="fa fa-angle-left"></i>
-            </button>
-            <div class="collage-scroll">
-                <!-- gallery:start -->
+            <div class="collage">
+                <button class="collage-nav collage-prev" type="button" aria-label="Previous photo">
+                    <i class="fa fa-angle-left"></i>
+                </button>
+                <div class="collage-scroll">
+                    <!-- gallery:start -->
                 <img src="img/gallery/00-costa-brava-1.jpg" alt="00 costa brava 1" loading="lazy">
                 <img src="img/gallery/01-sant-jordi.jpg" alt="01 sant jordi" loading="lazy">
                 <img src="img/gallery/02-formenterra.jpg" alt="02 formenterra" loading="lazy">
@@ -278,78 +358,99 @@
                 <img src="img/gallery/98-paretallada-2.jpg" alt="98 paretallada 2" loading="lazy">
                 <img src="img/gallery/99-engagement.jpg" alt="99 engagement" loading="lazy">
                 <!-- gallery:end -->
+                </div>
+                <button class="collage-nav collage-next" type="button" aria-label="Next photo">
+                    <i class="fa fa-angle-right"></i>
+                </button>
             </div>
-            <button class="collage-nav collage-next" type="button" aria-label="Next photo">
-                <i class="fa fa-angle-right"></i>
-            </button>
         </div>
-    </div>
-</section>
+    </section>
 
-<!-- Shown on phones too. The old hidden-sm/hidden-xs was upstream's, and it was there because
+    <!-- Shown on phones too. The old hidden-sm/hidden-xs was upstream's, and it was there because
      this band used to be a YouTube video background; it is three CSS-crossfaded photos now.
      queries.css shortens the band below 992px so the panorama is not cropped to a square. -->
-<section id="video-bg">
-    <div id="video-content">
-        <h5>L'Ametlla del Vallès</h5>
-        <p>Barcelona</p>
-    </div>
-</section>
-
-<!--Events Section-->
-<section class="events section-padding" id="events">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-12">
-                <img src="img/headers/6.4.png" class="wordmark" alt="Events">
-            </div>
+    <section id="video-bg">
+        <div id="video-content">
+            <h5>L'Ametlla del Vallès</h5>
+            <p>Barcelona</p>
         </div>
-        <div class="row">
-            <!-- Option 1 -->
-            <!-- <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
-                <div class="wp3">
-                    <p><strong>Afternoon</strong></p>
+    </section>
 
-                    <h5>Ceremony <span class="time">Times TBD</span></h5>
-                    <p>[EVENT 1 DESCRIPTION - Add details about the first day's events, atmosphere, dress code preferences, and what guests should expect.]</p>
-                </div>
-                <div class="wp3">
-                    <h5>Aperitif <span class="time">Times TBD</span></h5>
-                    <p>[EVENT 2 DESCRIPTION - Describe the second event, its significance, dress code, and any special activities planned.]</p>
-                </div>
-                <div class="wp5">
-                    <p><strong>Evening</strong></p>
-
-                    <h5>Banquet <span class="time">Times TBD</span></h5>
-                    <p>[EVENT 3 DESCRIPTION - Provide details about this pre-wedding event, including timing, traditions, and dress requirements.]</p>
-                </div>
-                <div class="wp5">
-                    <h5>Festa! <span class="time">Times TBD</span></h5>
-                    <p>[MAIN EVENT DESCRIPTION - This is typically the main wedding ceremony. Describe the significance, expected guest count, and key elements of the ceremony.]</p>
+    <!--Events Section-->
+    <section class="events section-padding" id="events">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <img src="img/headers/6.4.png" class="wordmark" alt="Events">
                 </div>
             </div>
-            <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
-                <div class="wp4">
-                    <p><strong>Catalan Weddings 101</strong></p>
+            <div class="row">
+                <!-- Option 1 -->
+                <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
+                    <div class="wp3">
+                        <p><strong>Afternoon</strong></p>
 
-                    <h5>Dinner happens late</h5>
-                    <p>Catalans like to eat late, and wedding banquets are no exception. Dinner often doesn't start until 8 p.m. or later, so have a snack beforehand and come prepared for a long night.</p>
+                        <h5>Ceremony <span class="time">Exact Times TBD</span></h5>
+                        <p>All events will be held at the same venue, the ceremony included.</p>
+                    </div>
+                    <div class="wp3">
+                        <h5>Aperitif <span class="time">Exact Times TBD</span></h5>
+                        <p>After the ceremony, everyone is invited to catch-up and relax over some drinks and snacks.
+                        </p>
+                    </div>
+                    <div class="wp5">
+                        <p><strong>Evening</strong></p>
+
+                        <h5>Banquet <span class="time">Exact Times TBD</span></h5>
+                        <p>Remember that Catalan dinners often start after 8 p.m. When it comes time for the banquet,
+                            bring your appetite!</p>
+                    </div>
+                    <div class="wp5">
+                        <h5>Festa! <span class="time">Exact Times TBD</span></h5>
+                        <p>Now that everyone is wined and dined, it is time to cut loose! Remember to pace yourself,
+                            Catalan weddings often run well into the early morning.</p>
+                    </div>
                 </div>
-                <div class="wp4">
+                <div class="col-md-6 col-sm-12 col-xs-12 rightcol">
+                    <!-- <div class="wp4">
+                        <p><strong>Catalan Weddings 101</strong></p>
+
+                        <h5>Dinner happens late</h5>
+                        <p>Catalans like to eat late, and wedding banquets are no exception. Dinner often doesn't start
+                            until 8 p.m. or later.</p>
+                    </div> -->
+                    <div class="wp4">
+                        <p><strong>Catalan Weddings 101</strong></p>
+
+                        <h5>Two kisses hello</h5>
+                        <p><em>Dos petons</em>, right cheek first, is a typical greeting in Catalunya. Men will often
+                            simply use a handshake or hug. When in doubt, just go with what the other goes for.</p>
+                    </div>
+                    <!-- <div class="wp4">
                     <h5>Cava is a part of the celebration</h5>
                     <p>Catalonia is home to Cava, a sparkling wine traditionally made in the region. It is a staple of Catalan celebrations and will likely accompany everything from the first toast to the final cheers of the evening.</p>
+                </div> -->
+                    <!-- <div class="wp4">
+                        <h5>Pace yourself</h5>
+                        <p>Catalan weddings are long, and we mean that in the best possible way. Between the ceremony,
+                            cocktails, dinner, and dancing, the party can continue well into the early morning. Take
+                            your time, enjoy every part of it, and whatever you do, don’t make early morning plans.</p>
+                    </div> -->
+                    <div class="wp4">
+                        <h5>La sobretaula</h5>
+                        <p>This the long stretch of sitting, talking and drinking at the table after the plates are
+                            cleared,
+                            before dancing starts. Catalans love a good chit-chat after meals.</p>
+                    </div>
+                    <div class="wp4">
+                        <h5>No need to pack a present</h5>
+                        <p>In Catalonia, cash is traditionally gift for newlyweds. No registry, no guessing whether they
+                            need another set of wine glasses, and no trying to fit a wedding gift into your suitcase.
+                        </p>
+                    </div>
                 </div>
-                <div class="wp6">
-                    <h5>Pace yourself</h5>
-                    <p>Catalan weddings are long, and we mean that in the best possible way. Between the ceremony, cocktails, dinner, and dancing, the party can continue well into the early morning. Take your time, enjoy every part of it, and whatever you do, don’t make early morning plans.</p>
-                </div>
-                <div class="wp6">
-                    <h5>No need to pack a present</h5>
-                    <p>In Catalonia, cash is traditionally gift for newlyweds. No registry, no guessing whether they need another set of wine glasses, and no trying to fit a wedding gift into your suitcase.</p>
-                </div>
-            </div> -->
-            <!-- Option 2 -->
-            <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
+                <!-- Option 2 -->
+                <!-- <div class="col-md-6 col-sm-12 col-xs-12 leftcol">
                 <div class="wp3">
                     <p><strong>Afternoon</strong></p>
 
@@ -372,459 +473,466 @@
                     <h5>Festa! <span class="time">Exact Times TBD</span></h5>
                     <p>Now that everyone is wined and dined, it is time to cut lose! Remember to pace yourself catalan weddings often run well into the early morning.</p>
                 </div>
+            </div> -->
             </div>
-        </div>
-        <div class="row section-padding">
-            <div class="col-md-4 col-md-offset-4 text-center">
-                <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
-                    <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
-                </a>
-                <!-- Filled by js/scripts.js (createCalendar). Lives here, not in the RSVP success
+            <div class="row section-padding">
+                <div class="col-md-4 col-md-offset-4 text-center">
+                    <a class="btn btn-accent btn-small" data-toggle="modal" data-target="#dc-modal">
+                        <i class="fa fa-barcode"></i>&nbsp;&nbsp;Dress code
+                    </a>
+                    <!-- Filled by js/scripts.js (createCalendar). Lives here, not in the RSVP success
                      modal, so guests can save the date before they decide. -->
-                <div id="add-to-cal" style="margin-top:15px"></div>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-xs-12 section-border section-padding">
-            </div>
-        </div>
-    </div>
-    <!-- Dress code -->
-    <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
-                    </button>
-                    <h3 class="text-center section-padding">Dress Codes</h3>
-                    <h5>[EVENT NAME 1]</h5>
-                    <p>
-                        <strong>[DRESS CODE THEME]</strong>
-                        <br>
-                        [Describe dress code expectations for this event. Include suggestions for ladies and gentlemen. You can add links to Pinterest boards or other style inspiration resources as needed.]
-                    </p>
+                    <div id="add-to-cal" style="margin-top:15px"></div>
                 </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+            </div>
+            <div class="row">
+                <div class="col-xs-12 section-border section-padding">
+                </div>
+            </div>
+        </div>
+        <!-- Dress code -->
+        <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                        </button>
+                        <h3 class="text-center section-padding">Dress Codes</h3>
+                        <h5>[EVENT NAME 1]</h5>
+                        <p>
+                            <strong>[DRESS CODE THEME]</strong>
+                            <br>
+                            [Describe dress code expectations for this event. Include suggestions for ladies and
+                            gentlemen. You can add links to Pinterest boards or other style inspiration resources as
+                            needed.]
+                        </p>
+                    </div>
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
-</section>
+    </section>
 
 
-<section id="map" class="section-padding">
-    <div class="text-center">
-        <img src="img/headers/4.png" class="wordmark" alt="The venue">
-        <!-- 1511 is the venue's own date, from masiacanplantada.com. Deliberate: the Catalan
+    <section id="map" class="section-padding">
+        <div class="text-center">
+            <img src="img/headers/4.png" class="wordmark" alt="The venue">
+            <!-- 1511 is the venue's own date, from masiacanplantada.com. Deliberate: the Catalan
              heritage inventory (poblesdecatalunya.cat/element.php?e=17745) says 1570, for a reform
              of a 12th-13th c. mas. Not an error to fix — we are quoting our hosts. -->
-        <p>Welcome to beautiful <a href="https://www.masiacanplantada.com/">Can Plantada</a>, which is built in <b>1511</b>!</p>
-    </div>
-    <iframe id="map-canvas" title="Masia Can Plantada on Google Maps"
-            src="https://www.google.com/maps?q=41.6517269,2.2493079&amp;hl=en&amp;z=15&amp;output=embed"
-            loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    <div id="map-content-wrapper" class="container pointer-events-none">
-        <div class="row">
-            <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6">
-                <div class="text-center">
-                    <div id="btn-show-content" class="toggle-map-content pointer-events-auto">
-                        <i class="fa fa-info-circle"></i>&nbsp;&nbsp; Show info
+            <p>Welcome to beautiful <a href="https://www.masiacanplantada.com/">Can Plantada</a>, which is built in
+                <b>1511</b>!
+            </p>
+        </div>
+        <iframe id="map-canvas" title="Masia Can Plantada on Google Maps"
+            src="https://www.google.com/maps?q=41.6517269,2.2493079&amp;hl=en&amp;z=15&amp;output=embed" loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"></iframe>
+        <div id="map-content-wrapper" class="container pointer-events-none">
+            <div class="row">
+                <div class="col-xs-offset-1 col-xs-10 col-md-offset-3 col-md-6">
+                    <div class="text-center">
+                        <div id="btn-show-content" class="toggle-map-content pointer-events-auto">
+                            <i class="fa fa-info-circle"></i>&nbsp;&nbsp; Show info
+                        </div>
                     </div>
-                </div>
-                <div id="map-content" class="pointer-events-auto">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <!-- Catalan "Masia", no accent — our spelling, not the venue's own
+                    <div id="map-content" class="pointer-events-auto">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <!-- Catalan "Masia", no accent — our spelling, not the venue's own
                                  "Masía". Deliberate, so the whole venue line reads as Catalan
                                  alongside "Camí" and "Vallès". Keep the three copies in sync:
                                  here, the iframe title at :418, and js/scripts.js:196. -->
-                            <h5>Masia Can Plantada</h5>
-                            <p>Camí de Can Plantada, s/n, L'Ametlla del Vallès, Barcelona 08480, Spain</p>
+                                <h5>Masia Can Plantada</h5>
+                                <p>Camí de Can Plantada, s/n, L'Ametlla del Vallès, Barcelona 08480, Spain</p>
+                            </div>
+                            <div class="col-md-6">
+                                <h5>Peter Brosten</h5>
+                                <p><i class="fa fa-mobile"></i> <a href="tel://+34641936245">+34 641 93 62 45</a><br>
+                                    <i class="fa fa-envelope"></i> <a
+                                        href="mailto:phbrosten@gmail.com">phbrosten@gmail.com</a>
+                                </p>
+                            </div>
                         </div>
-                        <div class="col-md-6">
-                            <h5>Peter Brosten</h5>
-                            <p><i class="fa fa-mobile"></i> <a href="tel://+34641936245">+34 641 93 62 45</a><br>
-                                <i class="fa fa-envelope"></i> <a href="mailto:phbrosten@gmail.com">phbrosten@gmail.com</a></p>
-                        </div>
-                    </div>
-                    <div class="row text-center">
-                        <div class="col-md-6" style="padding: 5px;">
-                            <a class="btn btn-fill btn-small" target="_blank" rel="noopener"
-                               href="https://www.google.com/maps/dir/?api=1&amp;destination=41.6517269,2.2493079"><i
-                                    class="fa fa-location-arrow"></i>&nbsp;&nbsp;Get directions</a>
-                        </div>
-                        <div class="col-md-6" style="padding: 5px;">
-                            <a class="btn btn-accent btn-small" id="btn-show-map"><i class="fa fa-map-marker"></i>&nbsp;&nbsp;Show
-                                map</a>
+                        <div class="row text-center">
+                            <div class="col-md-6" style="padding: 5px;">
+                                <a class="btn btn-fill btn-small" target="_blank" rel="noopener"
+                                    href="https://www.google.com/maps/dir/?api=1&amp;destination=41.6517269,2.2493079"><i
+                                        class="fa fa-location-arrow"></i>&nbsp;&nbsp;Get directions</a>
+                            </div>
+                            <div class="col-md-6" style="padding: 5px;">
+                                <a class="btn btn-accent btn-small" id="btn-show-map"><i
+                                        class="fa fa-map-marker"></i>&nbsp;&nbsp;Show
+                                    map</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<section class="rsvp text-center" id="rsvp">
+    <section class="rsvp text-center" id="rsvp">
 
-    <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-body">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
-                    </button>
-                    <div class="section-padding">
-                        <h3>Thank you!</h3>
-                        <p>We are glad to see you join us on our big day.</p>
+        <div id="rsvp-modal" class="modal fade" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
+                        </button>
+                        <div class="section-padding">
+                            <h3>Thank you!</h3>
+                            <p>We are glad to see you join us on our big day.</p>
+                        </div>
                     </div>
-                </div>
-            </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-    </div><!-- /.modal -->
+                </div><!-- /.modal-content -->
+            </div><!-- /.modal-dialog -->
+        </div><!-- /.modal -->
 
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6 col-md-offset-3">
-                <img src="img/headers/5.png" class="wordmark" alt="Can we count on you?">
-                <p>We would greatly appreciate if you could RSVP before Dec 31st 2026</p>
-                <!-- Field names come from the Google Form. Do NOT rename them by hand: a wrong
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8 col-md-offset-2">
+                    <img src="img/headers/5.png" class="wordmark" alt="Can we count on you?">
+                    <p>We would greatly appreciate if you could RSVP before Dec 31st 2026</p>
+                    <!-- Field names come from the Google Form. Do NOT rename them by hand: a wrong
                      entry.NNN is silently discarded by Google, not rejected. Re-derive them with
                      "Get pre-filled link" after any edit to the Form.
                      See site-wiki/planning/rsvp-google-form.md -->
-                <form id="rsvp-form" class="rsvp-form"
-                      action="https://docs.google.com/forms/d/e/1FAIpQLSf7IFJkh3GQV_PyO0lALTShkCorhRvuWUgJ0oOI5jITzE84GQ/formResponse"
-                      method="POST">
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <!-- pattern, not just type=email: HTML5 accepts a dotless domain
+                    <form id="rsvp-form" class="rsvp-form"
+                        action="https://docs.google.com/forms/d/e/1FAIpQLSf7IFJkh3GQV_PyO0lALTShkCorhRvuWUgJ0oOI5jITzE84GQ/formResponse"
+                        method="POST">
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-input-group">
+                                    <!-- pattern, not just type=email: HTML5 accepts a dotless domain
                                      ("guest@example"), Google's email question rejects it, and
                                      under no-cors that rejection is invisible. Requires a TLD. -->
-                                <i class="fa fa-envelope"></i><input type="email" name="emailAddress"
-                                                                     placeholder="Your email"
-                                                                     pattern="[^@\s]+@[^@\s]+\.[A-Za-z]{2,}"
-                                                                     title="Please enter a full email address"
-                                                                     required>
+                                    <i class="fa fa-envelope"></i><input type="email" name="emailAddress"
+                                        placeholder="Your email" pattern="[^@\s]+@[^@\s]+\.[A-Za-z]{2,}"
+                                        title="Please enter a full email address" required>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-input-group">
+                                    <i class="fa fa-user"></i><input name="entry.459759396" placeholder="Your name"
+                                        required>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-user"></i><input name="entry.459759396"
-                                                                 placeholder="Your name"
-                                                                 required>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input-group">
+                                    <!-- option values must match the Form's option text exactly -->
+                                    <i class="fa fa-check"></i><select name="entry.877086558" required>
+                                        <option value="" disabled selected>Will you be joining us?</option>
+                                        <option value="Yes, I'll be there">Yes, I'll be there</option>
+                                        <option value="Sorry, can't make it">Sorry, can't make it</option>
+                                        <option value="I'm not sure">I'm not sure</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-input-group">
-                                <!-- option values must match the Form's option text exactly -->
-                                <i class="fa fa-check"></i><select name="entry.877086558" required>
-                                    <option value="" disabled selected>Will you be joining us?</option>
-                                    <option value="Yes, I'll be there">Yes, I'll be there</option>
-                                    <option value="Sorry, can't make it">Sorry, can't make it</option>
-                                    <option value="I'm not sure">I'm not sure</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input-group tall">
+                                    <i class="fa fa-users"></i><textarea name="entry.1498135098"
+                                        placeholder="Full names of everyone in your party, including yourself"
+                                        required></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-input-group tall">
-                                <i class="fa fa-users"></i><textarea name="entry.1498135098"
-                                                                     placeholder="Full names of everyone in your party, including yourself"
-                                                                     required></textarea>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input-group tall">
+                                    <i class="fa fa-cutlery"></i><textarea name="entry.1009027462"
+                                        placeholder="Any dietary restrictions (per person if needed)"></textarea>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-input-group tall">
-                                <i class="fa fa-cutlery"></i><textarea name="entry.1009027462"
-                                                                       placeholder="Any dietary restrictions (per person if needed)"></textarea>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <!-- ponytail: native <details>, no JS, no plugin -->
+                                <details class="form-note">
+                                    <summary>About accommodation &amp; transport</summary>
+                                    <p>We are in contact with a hotel in Granollers, about 20 minutes
+                                        from the venue, to block a set of rooms specifically for our
+                                        wedding guests. Tell us here if you would like one and we will
+                                        send you the booking details once everything is confirmed.</p>
+                                    <p>We will also organise taxis from the hotel to the venue, and back
+                                        to the hotel at the end of the night.</p>
+                                </details>
                             </div>
                         </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-12">
-                            <!-- ponytail: native <details>, no JS, no plugin -->
-                            <details class="form-note">
-                                <summary>About accommodation &amp; transport</summary>
-                                <p>We are in contact with a hotel in Granollers, about 20 minutes
-                                    from the venue, to block a set of rooms specifically for our
-                                    wedding guests. Tell us here if you would like one and we will
-                                    send you the booking details once everything is confirmed.</p>
-                                <p>We will also organise taxis from the hotel to the venue, and back
-                                    to the hotel at the end of the night.</p>
-                            </details>
-                        </div>
-                    </div>
-                    <div class="row">
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-bed"></i><select name="entry.1306621828" required>
-                                    <option value="" disabled selected>Need accommodation?</option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-input-group">
+                                    <i class="fa fa-bed"></i><select name="entry.1306621828" required>
+                                        <option value="" disabled selected>Need accommodation?</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-input-group">
+                                    <i class="fa fa-bus"></i><select name="entry.234007366">
+                                        <option value="" disabled selected>Transport to the venue?</option>
+                                        <option value="Yes">Yes</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
-                        <div class="col-md-6 col-sm-6">
-                            <div class="form-input-group">
-                                <i class="fa fa-bus"></i><select name="entry.234007366">
-                                    <option value="" selected>Transport to the venue?</option>
-                                    <option value="Yes">Yes</option>
-                                    <option value="No">No</option>
-                                </select>
-                            </div>
-                        </div>
-                    </div>
-                    <!-- Deliberately has NO name attribute: the code is checked in the browser and
+                        <!-- Deliberately has NO name attribute: the code is checked in the browser and
                          never submitted. An unnamed input is not serialised, and the Google Form
                          has no question to receive it. -->
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-input-group">
-                                <i class="fa fa-key"></i><input id="invite_code"
-                                                                placeholder="Invitation code (check your save the date)"
-                                                                autocomplete="off" required>
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="form-input-group">
+                                    <i class="fa fa-key"></i><input id="invite_code"
+                                        placeholder="Invitation code (check your save the date)" autocomplete="off"
+                                        required>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                    <!-- "en" here, "ca" in cat/index.html -->
-                    <input type="hidden" name="entry.104865033" value="en">
-                    <!-- asks Google to email the guest a copy of their response -->
-                    <input type="hidden" name="emailReceipt" value="true">
-                    <div class="row">
-                        <div class="col-md-12" id="alert-wrapper"></div>
-                    </div>
-                    <button class="btn-fill rsvp-btn">
-                        Yes, that's me!
-                    </button>
-                </form>
+                        <!-- "en" here, "ca" in cat/index.html -->
+                        <input type="hidden" name="entry.104865033" value="en">
+                        <!-- asks Google to email the guest a copy of their response -->
+                        <input type="hidden" name="emailReceipt" value="true">
+                        <div class="row">
+                            <div class="col-md-12" id="alert-wrapper"></div>
+                        </div>
+                        <button class="btn-fill rsvp-btn">
+                            Yes, that's me!
+                        </button>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 
-<footer>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-12 text-center content">
-                <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
-                <p>Crafted by Peter with lots of <span class="fa fa-heart pulse2"></span> for Elena</p>
-                <p class="credit">A special thanks to <a href="https://julia-quintana.com/">Júlia Quintana</a> for the custom logo and headers</p>
-                <!-- Required by the image licences. All three banner photos are displayed, so all
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12 text-center content">
+                    <span class="to-top-wrapper"><a href="#top" class="to-top"><i class="fa fa-angle-up"></i></a></span>
+                    <p>Crafted by Peter with lots of <span class="fa fa-heart pulse2"></span> for Elena</p>
+                    <p class="credit">A special thanks to <a href="https://julia-quintana.com/">Júlia Quintana</a> for
+                        the custom logo and headers</p>
+                    <!-- Required by the image licences. All three banner photos are displayed, so all
                      three are credited — see site-wiki/content-and-assets.md -->
-                <p class="credit">Photo credits:
-                    <a href="https://commons.wikimedia.org/wiki/File:Vall%C3%A8s_des_de_Cingles_de_Bert%C3%AD.jpg">Vallès
-                        des de Cingles de Bertí</a> and <a
+                    <p class="credit">Photo credits:
+                        <a href="https://commons.wikimedia.org/wiki/File:Vall%C3%A8s_des_de_Cingles_de_Bert%C3%AD.jpg">Vallès
+                            des de Cingles de Bertí</a> and <a
                             href="https://commons.wikimedia.org/wiki/File:Posta_de_sol_des_de_Cingles_de_Bert%C3%AD.jpg">Posta
-                        de sol des de Cingles de Bertí</a> by Mtpla, <a
+                            de sol des de Cingles de Bertí</a> by Mtpla, <a
                             href="https://creativecommons.org/licenses/by-sa/3.0/" rel="license">CC BY-SA 3.0</a>;
-                    <a href="https://commons.wikimedia.org/wiki/File:Cingles_de_Bert%C3%AD_-_panoramio_(1).jpg">Cingles
-                        de Bertí</a> by Jorge Franganillo, <a
-                            href="https://creativecommons.org/licenses/by/3.0/" rel="license">CC BY 3.0</a>.</p>
+                        <a href="https://commons.wikimedia.org/wiki/File:Cingles_de_Bert%C3%AD_-_panoramio_(1).jpg">Cingles
+                            de Bertí</a> by Jorge Franganillo, <a href="https://creativecommons.org/licenses/by/3.0/"
+                            rel="license">CC BY 3.0</a>.
+                    </p>
+                </div>
             </div>
         </div>
-    </div>
-</footer>
-<script src="js/vendor/jquery-1.11.2.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
-<script src="js/vendor/bootstrap.min.js"></script>
-<script src="js/vendor/ouical.js"></script>
-<script src="js/scripts.min.js"></script>
-<script>
-    // Pin the hero content a gap below the header's white rule.
-    (function () {
-        var header = document.querySelector('.hero header'),
-            content = document.querySelector('.hero .hero-content');
-        function place() {
-            // Past 20px the site's own script removes the border and shrinks the header,
-            // so only measure while the rule is actually on screen.
-            if (window.pageYOffset < 20) {
-                // 40px on a normal window, less on a short one — same reason the CSS above
-                // scales: this gap sits between the rule and a wordmark that has to stay
-                // clear of the couple's heads, and short windows raise the heads.
-                var gap = Math.min(40, window.innerHeight * 0.045);
-                content.style.paddingTop = header.offsetHeight + gap + 'px';
+    </footer>
+    <script src="js/vendor/jquery-1.11.2.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/waypoints/4.0.1/jquery.waypoints.min.js"></script>
+    <script src="js/vendor/bootstrap.min.js"></script>
+    <script src="js/vendor/ouical.js"></script>
+    <script src="js/scripts.min.js"></script>
+    <script>
+        // Pin the hero content a gap below the header's white rule.
+        (function () {
+            var header = document.querySelector('.hero header'),
+                content = document.querySelector('.hero .hero-content');
+            function place() {
+                // Past 20px the site's own script removes the border and shrinks the header,
+                // so only measure while the rule is actually on screen.
+                if (window.pageYOffset < 20) {
+                    // 40px on a normal window, less on a short one — same reason the CSS above
+                    // scales: this gap sits between the rule and a wordmark that has to stay
+                    // clear of the couple's heads, and short windows raise the heads.
+                    var gap = Math.min(40, window.innerHeight * 0.045);
+                    content.style.paddingTop = header.offsetHeight + gap + 'px';
+                }
             }
-        }
-        place();
-        window.addEventListener('load', place);
-        window.addEventListener('resize', place);
-        window.addEventListener('scroll', place);
-    })();
-</script>
-<script>
-    // Carousel arrows for the pictures strip. Drives the native scroll container rather
-    // than replacing it, so touch swiping and scroll-snap keep working underneath.
-    (function () {
-        var box = document.querySelector('.collage-scroll');
-        if (!box) return;
-        var imgs = [].slice.call(box.querySelectorAll('img')),
-            prev = document.querySelector('.collage-prev'),
-            next = document.querySelector('.collage-next'),
-            caption = document.querySelector('.collage-caption'),
-            heading = document.querySelector('#pictures h3');
+            place();
+            window.addEventListener('load', place);
+            window.addEventListener('resize', place);
+            window.addEventListener('scroll', place);
+        })();
+    </script>
+    <script>
+        // Carousel arrows for the pictures strip. Drives the native scroll container rather
+        // than replacing it, so touch swiping and scroll-snap keep working underneath.
+        (function () {
+            var box = document.querySelector('.collage-scroll');
+            if (!box) return;
+            var imgs = [].slice.call(box.querySelectorAll('img')),
+                prev = document.querySelector('.collage-prev'),
+                next = document.querySelector('.collage-next'),
+                caption = document.querySelector('.collage-caption'),
+                heading = document.querySelector('#pictures h3');
 
-        // Caption per photo, keyed by filename.
-        var CAPTIONS = {
-            '00-costa-brava-1.jpg': 'So here are 25 thousand from our story so far.',
-            '01-sant-jordi.jpg': 'We have grown through sharing our cultures.',
-            '02-formenterra.jpg': 'Explored sand-filled islands',
-            '03-montserrat.jpg': 'and mountain tops.',
-            '04-garmisch-2.JPG': 'Always being each other\'s best friend.',
-            '05-christmas.jpg': 'Even if we need to share with our little fur ball.',
-            '06-costa-brava-2.jpg': 'Peter found a love of Costa Brava',
-            '12-smores.jpg': 'and Elena a joy in late night s\'mores.',
-            '15-peratallada.JPG': 'We loved sharing moments to remeber.',
-            '25-go-nats.jpg': 'We\'ve watched wild baseball games,',
-            '25-runnin-1.jpg': 'run international races,',
-            '26-quaker-lake.jpg': 'chilled on the dock,',
-            '30-Rome.jpg': 'and travelled the world.',
-            '35-runnin-2.jpg': 'All of it, always together.',
-            '45-viena.jpg': 'We knew our love was strong',
-            '48-home-deed.jpg': 'and after years of saving',
-            '48-keys.jpg': 'we found our home.',
-            '49-home-reno.jpg': 'Then came the "fun" part',
-            '49-pizza-date.jpg': 'and after a few pizza dates on the floor,',
-            '50-moving.jpg': 'we were ready to start our next step',
-            '51-cuddles.jpg': 'together.',
-            '60-port-del-compte.jpg': 'A couple months passed',
-            '65-london.jpg': 'of enjoying our new life together.',
-            '98-paretallada-2.jpg': 'Peter only had one question left',
-            '99-engagement.jpg': 'and Elena said yes!'
-        };
-        function captionOf(img) {
-            return CAPTIONS[img.getAttribute('src').split('/').pop()] || '';
-        }
+            // Caption per photo, keyed by filename.
+            var CAPTIONS = {
+                '00-costa-brava-1.jpg': 'So here are 25 thousand from our story so far.',
+                '01-sant-jordi.jpg': 'We have grown through sharing our cultures.',
+                '02-formenterra.jpg': 'Explored sand-filled islands',
+                '03-montserrat.jpg': 'and mountain tops.',
+                '04-garmisch-2.JPG': 'Always being each other\'s best friend.',
+                '05-christmas.jpg': 'Even if we need to share with our little fur ball.',
+                '06-costa-brava-2.jpg': 'Peter found a love of Costa Brava',
+                '12-smores.jpg': 'and Elena a joy in late night s\'mores.',
+                '15-peratallada.JPG': 'We loved sharing moments to remeber.',
+                '25-go-nats.jpg': 'We\'ve watched wild baseball games,',
+                '25-runnin-1.jpg': 'run international races,',
+                '26-quaker-lake.jpg': 'chilled on the dock,',
+                '30-Rome.jpg': 'and travelled the world.',
+                '35-runnin-2.jpg': 'All of it, always together.',
+                '45-viena.jpg': 'We knew our love was strong',
+                '48-home-deed.jpg': 'and after years of saving',
+                '48-keys.jpg': 'we found our home.',
+                '49-home-reno.jpg': 'Then came the "fun" part',
+                '49-pizza-date.jpg': 'and after a few pizza dates on the floor,',
+                '50-moving.jpg': 'we were ready to start our next step',
+                '51-cuddles.jpg': 'together.',
+                '60-port-del-compte.jpg': 'A couple months passed',
+                '65-london.jpg': 'of enjoying our new life together.',
+                '98-paretallada-2.jpg': 'Peter only had one question left',
+                '99-engagement.jpg': 'and Elena said yes!'
+            };
+            function captionOf(img) {
+                return CAPTIONS[img.getAttribute('src').split('/').pop()] || '';
+            }
 
-        // scrollLeft that centres a given image. The strip's 50% end padding gives even the
-        // first and last photo enough room to reach the middle.
-        function centreOf(img) {
-            return img.offsetLeft - (box.clientWidth - img.offsetWidth) / 2;
-        }
-        // Which photo is nearest the middle right now -- the anchor a click steps from,
-        // so arrows behave sensibly after a manual swipe as well.
-        function nearest() {
-            var mid = box.scrollLeft + box.clientWidth / 2, best = 0, min = Infinity;
-            imgs.forEach(function (img, i) {
-                var d = Math.abs(img.offsetLeft + img.offsetWidth / 2 - mid);
-                if (d < min) { min = d; best = i; }
-            });
-            return best;
-        }
-        function scrollToIndex(i) {
-            box.scrollTo({ left: centreOf(imgs[i]), behavior: 'smooth' });
-        }
-        var stepped = 0; // direction of the last arrow click, for the caption slide
-        function go(step) {
-            if (rewinding) return;
-            stepped = step;
-            scrollToIndex((nearest() + step + imgs.length) % imgs.length);
-        }
-        prev.addEventListener('click', function () { go(-1); });
-        next.addEventListener('click', function () { go(1); });
+            // scrollLeft that centres a given image. The strip's 50% end padding gives even the
+            // first and last photo enough room to reach the middle.
+            function centreOf(img) {
+                return img.offsetLeft - (box.clientWidth - img.offsetWidth) / 2;
+            }
+            // Which photo is nearest the middle right now -- the anchor a click steps from,
+            // so arrows behave sensibly after a manual swipe as well.
+            function nearest() {
+                var mid = box.scrollLeft + box.clientWidth / 2, best = 0, min = Infinity;
+                imgs.forEach(function (img, i) {
+                    var d = Math.abs(img.offsetLeft + img.offsetWidth / 2 - mid);
+                    if (d < min) { min = d; best = i; }
+                });
+                return best;
+            }
+            function scrollToIndex(i) {
+                box.scrollTo({ left: centreOf(imgs[i]), behavior: 'smooth' });
+            }
+            var stepped = 0; // direction of the last arrow click, for the caption slide
+            function go(step) {
+                if (rewinding) return;
+                stepped = step;
+                scrollToIndex((nearest() + step + imgs.length) % imgs.length);
+            }
+            prev.addEventListener('click', function () { go(-1); });
+            next.addEventListener('click', function () { go(1); });
 
-        var OUT_MS = 180, IN_MS = 280, still = window.matchMedia('(prefers-reduced-motion: reduce)'),
-            travel = 0, shown = -1, swap, rewinding = false;
-        function measure() {
-            travel = heading ? document.createRange().selectNodeContents(heading)
-                .getBoundingClientRect().width / 2 : 0;
-        }
-        function slideTo(text, dir) {
-            clearTimeout(swap);
-            caption.style.transition = 'transform ' + OUT_MS + 'ms ease-in, opacity ' + OUT_MS + 'ms ease-in';
-            caption.style.transform = 'translateX(' + (-dir * travel) + 'px)';
-            caption.style.opacity = 0;
-            swap = setTimeout(function () {
-                caption.textContent = text;
-                caption.style.transition = 'none'; // jump to the far side without animating across
-                caption.style.transform = 'translateX(' + (dir * travel) + 'px)';
-                caption.offsetWidth; // flush that jump, or the browser folds it into the fade in
-                caption.style.transition = 'transform ' + IN_MS + 'ms ease-out, opacity ' + IN_MS + 'ms ease-out';
+            var OUT_MS = 180, IN_MS = 280, still = window.matchMedia('(prefers-reduced-motion: reduce)'),
+                travel = 0, shown = -1, swap, rewinding = false;
+            function measure() {
+                travel = heading ? document.createRange().selectNodeContents(heading)
+                    .getBoundingClientRect().width / 2 : 0;
+            }
+            function slideTo(text, dir) {
+                clearTimeout(swap);
+                caption.style.transition = 'transform ' + OUT_MS + 'ms ease-in, opacity ' + OUT_MS + 'ms ease-in';
+                caption.style.transform = 'translateX(' + (-dir * travel) + 'px)';
+                caption.style.opacity = 0;
+                swap = setTimeout(function () {
+                    caption.textContent = text;
+                    caption.style.transition = 'none'; // jump to the far side without animating across
+                    caption.style.transform = 'translateX(' + (dir * travel) + 'px)';
+                    caption.offsetWidth; // flush that jump, or the browser folds it into the fade in
+                    caption.style.transition = 'transform ' + IN_MS + 'ms ease-out, opacity ' + IN_MS + 'ms ease-out';
+                    caption.style.transform = 'translateX(0)';
+                    caption.style.opacity = 1;
+                }, OUT_MS);
+            }
+
+            function sync() {
+                var i = nearest();
+                prev.classList.toggle('collage-nav-muted', i === 0);
+                // The rewind crosses every photo, so leaving this on would strobe the whole
+                // story through the caption line on the way back.
+                if (rewinding || !caption || i === shown) return;
+                // stepped is set by the arrows, so a wrap round the end still animates the way
+                // the strip actually travelled; a swipe falls back to comparing indexes.
+                var dir = stepped || (shown < 0 ? 0 : (i > shown ? 1 : -1));
+                stepped = 0;
+                shown = i;
+                if (dir && !still.matches) return slideTo(captionOf(imgs[i]), dir);
+                caption.style.transition = 'none';
                 caption.style.transform = 'translateX(0)';
                 caption.style.opacity = 1;
-            }, OUT_MS);
-        }
+                caption.textContent = captionOf(imgs[i]);
+            }
+            box.addEventListener('scroll', sync);
+            window.addEventListener('resize', function () { measure(); sync(); });
+            measure();
 
-        function sync() {
-            var i = nearest();
-            prev.classList.toggle('collage-nav-muted', i === 0);
-            // The rewind crosses every photo, so leaving this on would strobe the whole
-            // story through the caption line on the way back.
-            if (rewinding || !caption || i === shown) return;
-            // stepped is set by the arrows, so a wrap round the end still animates the way
-            // the strip actually travelled; a swipe falls back to comparing indexes.
-            var dir = stepped || (shown < 0 ? 0 : (i > shown ? 1 : -1));
-            stepped = 0;
-            shown = i;
-            if (dir && !still.matches) return slideTo(captionOf(imgs[i]), dir);
-            caption.style.transition = 'none';
-            caption.style.transform = 'translateX(0)';
-            caption.style.opacity = 1;
-            caption.textContent = captionOf(imgs[i]);
-        }
-        box.addEventListener('scroll', sync);
-        window.addEventListener('resize', function () { measure(); sync(); });
-        measure();
-
-        // Add rewind to the photo gallery on start-up.
-        rewinding = true;
-        box.scrollLeft = centreOf(imgs[imgs.length - 1]);
-        sync();
-
-        if (caption) {
-            caption.textContent = captionOf(imgs[0]);
-            caption.style.visibility = 'hidden';
-        }
-
-        var FADE_MS = 700;
-        function reveal() {
-            rewinding = false;
-            shown = -1;
+            // Add rewind to the photo gallery on start-up.
+            rewinding = true;
+            box.scrollLeft = centreOf(imgs[imgs.length - 1]);
             sync();
-            if (!caption) return;
-            if (still.matches) { caption.style.visibility = ''; return; }
-            caption.style.transition = 'none';
-            caption.style.opacity = 0;
-            caption.style.visibility = '';
-            caption.offsetWidth; // flush, or the browser folds the reset into the fade
-            caption.style.transition = 'opacity ' + FADE_MS + 'ms ease-out';
-            caption.style.opacity = 1;
-        }
 
-        var REWIND_MS = 4000;
-        function rewind(done) {
-            var from = box.scrollLeft, to = centreOf(imgs[0]), t0 = null;
-            box.style.scrollSnapType = 'none';
-            box.style.overflowX = 'hidden';
-            requestAnimationFrame(function frame(t) {
-                if (t0 === null) t0 = t;
-                var p = Math.min((t - t0) / REWIND_MS, 1),
-                    // easeInOutCubic: creeps off the last photo, coasts, settles on the first
-                    e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
-                box.scrollLeft = from + (to - from) * e;
-                if (p < 1) return requestAnimationFrame(frame);
-                box.style.scrollSnapType = ''; // back to the stylesheet's mandatory snap
-                box.style.overflowX = '';
-                done();
-            });
-        }
+            if (caption) {
+                caption.textContent = captionOf(imgs[0]);
+                caption.style.visibility = 'hidden';
+            }
 
-        var section = document.querySelector('#pictures');
-        if (section && window.IntersectionObserver) {
-            var io = new IntersectionObserver(function (entries) {
-                if (!entries[0].isIntersecting) return;
-                io.disconnect(); // once per page load, not on every pass
-                if (still.matches) { box.scrollLeft = centreOf(imgs[0]); reveal(); return; }
-                rewind(reveal);
-            }, { threshold: 0.35 });
-            io.observe(section);
-        } else {
-            // No observer to end the rewind, so nothing would ever release the caption.
-            reveal();
-        }
-    })();
-</script>
+            var FADE_MS = 700;
+            function reveal() {
+                rewinding = false;
+                shown = -1;
+                sync();
+                if (!caption) return;
+                if (still.matches) { caption.style.visibility = ''; return; }
+                caption.style.transition = 'none';
+                caption.style.opacity = 0;
+                caption.style.visibility = '';
+                caption.offsetWidth; // flush, or the browser folds the reset into the fade
+                caption.style.transition = 'opacity ' + FADE_MS + 'ms ease-out';
+                caption.style.opacity = 1;
+            }
+
+            var REWIND_MS = 4000;
+            function rewind(done) {
+                var from = box.scrollLeft, to = centreOf(imgs[0]), t0 = null;
+                box.style.scrollSnapType = 'none';
+                box.style.overflowX = 'hidden';
+                requestAnimationFrame(function frame(t) {
+                    if (t0 === null) t0 = t;
+                    var p = Math.min((t - t0) / REWIND_MS, 1),
+                        // easeInOutCubic: creeps off the last photo, coasts, settles on the first
+                        e = p < .5 ? 4 * p * p * p : 1 - Math.pow(-2 * p + 2, 3) / 2;
+                    box.scrollLeft = from + (to - from) * e;
+                    if (p < 1) return requestAnimationFrame(frame);
+                    box.style.scrollSnapType = ''; // back to the stylesheet's mandatory snap
+                    box.style.overflowX = '';
+                    done();
+                });
+            }
+
+            var section = document.querySelector('#pictures');
+            if (section && window.IntersectionObserver) {
+                var io = new IntersectionObserver(function (entries) {
+                    if (!entries[0].isIntersecting) return;
+                    io.disconnect(); // once per page load, not on every pass
+                    if (still.matches) { box.scrollLeft = centreOf(imgs[0]); reveal(); return; }
+                    rewind(reveal);
+                }, { threshold: 0.35 });
+                io.observe(section);
+            } else {
+                // No observer to end the rewind, so nothing would ever release the caption.
+                reveal();
+            }
+        })();
+    </script>
 </body>
+
 </html>

@@ -53,3 +53,9 @@
 .btn-margin-right {
 	margin-right: 20px;
 }
+// ponytail: desktop-only bump, same 1.33x scale as p in _typography
+@media (min-width: 992px) {
+	.btn, .btn-white, .btn-fill {
+		font-size: 17px;
+	}
+}
