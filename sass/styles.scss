@@ -655,6 +655,15 @@ RSVP form
           font-size: 20px;
         }
       }
+      // iOS Safari ignores padding on a natively-styled <select>, so the placeholder text
+      // sat under the icon. Dropping the native look makes padding-left apply; the chevron
+      // it took with it comes back as a background image.
+      select {
+        -webkit-appearance: none;
+        appearance: none;
+        background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%231c3653' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 20px center;
+        padding-right: 44px;
+      }
       select:invalid {
         color: $form-placeholder;
       }
