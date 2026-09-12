@@ -436,19 +436,47 @@
         </div>
         <!-- Dress code -->
         <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <!-- modal-lg, not the default 600px: the inspiration boards are ~10 figures wide each
+                 and need the room. Bootstrap drops it back to 600px and then full-bleed on its own. -->
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Tanca"><span>&times;</span>
                         </button>
                         <h3 class="text-center section-padding">Codi de vestimenta</h3>
-                        <h5>[NOM DE L'ACTE 1]</h5>
                         <p>
-                            <strong>[TEMA DEL CODI DE VESTIMENTA]</strong>
+                            <strong>Semi-Formal</strong>
                             <br>
-                            [Descriu què s'espera de la vestimenta en aquest acte. Inclou suggeriments per a elles i per
-                            a ells. Si cal, pots afegir enllaços a taulers de Pinterest o altres fonts d'inspiració.]
+                            Vestits i vestits llargs; no cal anar de frac o esmòquing. El setembre a Catalunya és càlid, així que busca alguna cosa transpirable que et permeti ballar.
                         </p>
+                        <p>
+                            <strong>Necessites una mica d'inspiració?</strong>
+                        </p>
+                        <!-- One board at a time on desktop, both stacked below 992px — all of it in
+                             styles.scss, no JS. The radios must stay siblings of .dc-tabs and
+                             .dc-panes for the `~` selectors to reach them. -->
+                        <div class="dc-looks">
+                            <input type="radio" name="dc-look" id="dc-her" class="dc-radio" checked>
+                            <input type="radio" name="dc-look" id="dc-him" class="dc-radio">
+                            <div class="dc-tabs">
+                                <label for="dc-her">Per a elles</label>
+                                <label for="dc-him">Per a ells</label>
+                            </div>
+                            <div class="dc-panes">
+                                <div class="dc-her">
+                                    <h5 class="dc-heading">Per a elles</h5>
+                                    <!-- lazy: the modal is display:none until opened, so these two
+                                         never touch the network on a normal page load. -->
+                                    <img src="../img/inspiration-women.webp" loading="lazy"
+                                        alt="Inspiració: nou vestits semiformals per a elles, vestits llargs estampats i conjunts sastre">
+                                </div>
+                                <div class="dc-him">
+                                    <h5 class="dc-heading">Per a ells</h5>
+                                    <img src="../img/inspiration-men.webp" loading="lazy"
+                                        alt="Inspiració: deu vestits semiformals per a ells, vestits en blau marí, gris marengo, gris i lli">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -535,10 +563,6 @@
                 <div class="col-md-8 col-md-offset-2">
                     <img src="../img/headers/e.png" class="wordmark" alt="Podem comptar amb tu?">
                     <p>Us agrairíem molt que confirméssiu l'assistència abans del 31 de desembre del 2026</p>
-                    <!-- Field names come from the Google Form. Do NOT rename them by hand: a wrong
-                     entry.NNN is silently discarded by Google, not rejected. Re-derive them with
-                     "Get pre-filled link" after any edit to the Form.
-                     See site-wiki/planning/rsvp-google-form.md -->
                     <form id="rsvp-form" class="rsvp-form"
                         action="https://docs.google.com/forms/d/e/1FAIpQLSf7IFJkh3GQV_PyO0lALTShkCorhRvuWUgJ0oOI5jITzE84GQ/formResponse"
                         method="POST">
@@ -590,26 +614,6 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-input-group">
-                                    <i class="fa fa-bed"></i><select name="entry.1306621828" required>
-                                        <option value="" disabled selected>Necessites allotjament?</option>
-                                        <option value="Yes">Sí</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="col-md-6 col-sm-6">
-                                <div class="form-input-group">
-                                    <i class="fa fa-bus"></i><select name="entry.234007366">
-                                        <option value="" selected>Vols transport fins al lloc?</option>
-                                        <option value="Yes">Sí</option>
-                                        <option value="No">No</option>
-                                    </select>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
                             <div class="col-md-12">
                                 <!-- ponytail: native <details>, no JS, no plugin -->
                                 <details class="form-note">
@@ -622,6 +626,29 @@
                                     <p>També organitzarem taxis des de l'hotel fins al lloc de la
                                         celebració, i de tornada a l'hotel al final de la nit.</p>
                                 </details>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-input-group">
+                                    <i class="fa fa-bed"></i><select name="entry.1306621828" required>
+                                        <option value="" disabled selected>Necessites allotjament?</option>
+                                        <option value="Yes">Sí</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-sm-6">
+                                <div class="form-input-group">
+                                    <!-- The only optional select, so its placeholder is NOT disabled:
+                                     a guest who mis-clicks can go back to blank. The two required
+                                     ones keep `disabled` — there, blank is not an answer. -->
+                                    <i class="fa fa-bus"></i><select name="entry.234007366">
+                                        <option value="" selected>Vols transport fins al lloc?</option>
+                                        <option value="Yes">Sí</option>
+                                        <option value="No">No</option>
+                                    </select>
+                                </div>
                             </div>
                         </div>
                         <!-- Deliberately has NO name attribute: the code is checked in the browser and

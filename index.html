@@ -492,20 +492,40 @@
         </div>
         <!-- Dress code -->
         <div id="dc-modal" class="modal fade" tabindex="-1" role="dialog">
-            <div class="modal-dialog" role="document">
+            <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-body">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span>
                         </button>
-                        <h3 class="text-center section-padding">Dress Codes</h3>
-                        <!-- <h5>[EVENT NAME 1]</h5> -->
+                        <h3 class="text-center section-padding">Dress Code</h3>
                         <p>
                             <strong>Semi-Formal</strong>
                             <br>
-                            [Describe dress code expectations for this event. Include suggestions for ladies and
-                            gentlemen. You can add links to Pinterest boards or other style inspiration resources as
-                            needed.]
+                            Suits and long dresses, no need for a black tie. September in Catalunya is warm so look for something breathable you can dance in.
                         </p>
+                        <p>
+                            <strong>Need some inspiration?</strong>
+                        </p>
+                        <div class="dc-looks">
+                            <input type="radio" name="dc-look" id="dc-her" class="dc-radio" checked>
+                            <input type="radio" name="dc-look" id="dc-him" class="dc-radio">
+                            <div class="dc-tabs">
+                                <label for="dc-her">For her</label>
+                                <label for="dc-him">For him</label>
+                            </div>
+                            <div class="dc-panes">
+                                <div class="dc-her">
+                                    <h5 class="dc-heading">For her</h5>
+                                    <img src="img/inspiration-women.webp" loading="lazy"
+                                        alt="Inspiration board: nine semi-formal outfits for women, long printed dresses and tailored separates">
+                                </div>
+                                <div class="dc-him">
+                                    <h5 class="dc-heading">For him</h5>
+                                    <img src="img/inspiration-men.webp" loading="lazy"
+                                        alt="Inspiration board: ten semi-formal outfits for men, suits in navy, charcoal, grey and linen">
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div><!-- /.modal-content -->
             </div><!-- /.modal-dialog -->
@@ -517,9 +537,6 @@
     <section id="map" class="section-padding">
         <div class="container text-center">
             <img src="img/headers/4.png" class="wordmark" alt="The venue">
-            <!-- 1511 is the venue's own date, from masiacanplantada.com. Deliberate: the Catalan
-             heritage inventory (poblesdecatalunya.cat/element.php?e=17745) says 1570, for a reform
-             of a 12th-13th c. mas. Not an error to fix — we are quoting our hosts. -->
             <p>Welcome to beautiful <a href="https://www.masiacanplantada.com/">Can Plantada</a>, which is built in
                 <b>1511</b>!
             </p>
@@ -538,10 +555,6 @@
                     <div id="map-content" class="pointer-events-auto">
                         <div class="row">
                             <div class="col-md-6">
-                                <!-- Catalan "Masia", no accent — our spelling, not the venue's own
-                                 "Masía". Deliberate, so the whole venue line reads as Catalan
-                                 alongside "Camí" and "Vallès". Keep the three copies in sync:
-                                 here, the iframe title at :418, and js/scripts.js:196. -->
                                 <h5>Masia Can Plantada</h5>
                                 <p>Camí de Can Plantada, s/n, L'Ametlla del Vallès, Barcelona 08480, Spain</p>
                             </div>
@@ -592,11 +605,8 @@
             <div class="row">
                 <div class="col-md-8 col-md-offset-2">
                     <img src="img/headers/5.png" class="wordmark" alt="Can we count on you?">
-                    <p>We would greatly appreciate if you could RSVP before Dec 31st 2026</p>
-                    <!-- Field names come from the Google Form. Do NOT rename them by hand: a wrong
-                     entry.NNN is silently discarded by Google, not rejected. Re-derive them with
-                     "Get pre-filled link" after any edit to the Form.
-                     See site-wiki/planning/rsvp-google-form.md -->
+                    <p>We would love to know who can make it! Please send an inital RSVP as soon as possible, you can
+                        always come back an resubmit with more detail.</p>
                     <form id="rsvp-form" class="rsvp-form"
                         action="https://docs.google.com/forms/d/e/1FAIpQLSf7IFJkh3GQV_PyO0lALTShkCorhRvuWUgJ0oOI5jITzE84GQ/formResponse"
                         method="POST">
@@ -674,8 +684,11 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-input-group">
+                                    <!-- The only optional select, so its placeholder is NOT disabled:
+                                     a guest who mis-clicks can go back to blank. The two required
+                                     ones keep `disabled` — there, blank is not an answer. -->
                                     <i class="fa fa-bus"></i><select name="entry.234007366">
-                                        <option value="" disabled selected>Transport to the venue?</option>
+                                        <option value="" selected>Transport to the venue?</option>
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
@@ -718,8 +731,6 @@
                     <p>Crafted by Peter with lots of <span class="fa fa-heart pulse2"></span> for Elena</p>
                     <p class="credit">A special thanks to <a href="https://julia-quintana.com/">Júlia Quintana</a> for
                         the custom logo and headers</p>
-                    <!-- Required by the image licences. All three banner photos are displayed, so all
-                     three are credited — see site-wiki/content-and-assets.md -->
                     <p class="credit">Photo credits:
                         <a href="https://commons.wikimedia.org/wiki/File:Vall%C3%A8s_des_de_Cingles_de_Bert%C3%AD.jpg">Vallès
                             des de Cingles de Bertí</a> and <a

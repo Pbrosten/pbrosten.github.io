@@ -203,6 +203,10 @@ Navigation
   top: 48px;
   visibility: hidden;
   transition: all 300ms ease-in-out;
+  // The inline `transform: translateY(-50%)` in index.html makes this a stacking context, which
+  // traps .nav-toggle's z-index inside it — the open .header-nav overlay (99999) then covers the
+  // X and eats the click. Must stay above that overlay. Drop this only if the transform goes.
+  z-index: 999999;
 }
 
 /* ==========================================================================
@@ -336,6 +340,13 @@ header {
 /* ==========================================================================
 Intro
 ========================================================================== */
+// #intro opens with its own 40px, and #invitation closes with a <p> carrying the global 20px
+// padding-bottom — stacked on .section-padding's 40px that is a ~100px hole between the two.
+// Dropping the bottom 40 leaves 60px, the same gap #intro/#pictures already has.
+#invitation {
+  padding-bottom: 0;
+}
+
 #intro {
   padding-top: 40px;
   img {
@@ -667,6 +678,17 @@ RSVP form
       select:invalid {
         color: $form-placeholder;
       }
+      // What we actually mean is "the placeholder option is still showing". `:invalid` is only a
+      // proxy for that, and it only holds on a *required* select — the optional transport field
+      // was never invalid, so its placeholder rendered in full body colour and read as an answer
+      // sitting next to the greyed-out accommodation one.
+      //
+      // Kept as its own rule, NOT comma-joined to the one above: a parser that doesn't know
+      // `:has()` drops a whole selector list containing it, which would take `select:invalid`
+      // down with it. Split, such a browser just falls back to today's behaviour.
+      select:has(option[value=""]:checked) {
+        color: $form-placeholder;
+      }
       textarea {
         height: auto;
         padding-top: 16px;
@@ -773,4 +795,89 @@ body.modal-open {
 }
 .modal-body {
   padding:25px;
+}
+
+/* ==========================================================================
+Dress code inspiration boards
+========================================================================== */
+// Two boards of ~10 cut-out figures each, so the only number that matters is how wide one
+// person ends up. 992px is where Bootstrap's .modal-lg widens to 900px and a figure finally
+// reads at ~140px — there we show one board at a time behind a pair of radio "tabs". Below
+// that the tabs go and both boards stack full width: splitting a 355px modal in two leaves
+// 26px per person, which is a colour swatch, not inspiration.
+.dc-looks img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
+}
+// Mobile: no tabs, both boards shown, each with its own heading. `display:none` on the radios
+// (rather than the usual visually-hidden) also keeps them out of the tab order while inert.
+.dc-radio,
+.dc-tabs {
+  display: none;
+}
+.dc-heading {
+  font-family: $accent-font;
+  font-weight: $bold;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  color: $h5-color;
+  margin: 30px 0 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid $keyline-color;
+}
+
+@media (min-width: 992px) {
+  // Full-bleed to the modal edges reads as oversized next to the copy above it; 75% sits the
+  // board inside the text column and still leaves ~106px per figure, above the ~90px a face
+  // needs. Desktop only — a phone has no width to give away.
+  .dc-looks img {
+    width: 50%;
+  }
+  .dc-heading {
+    display: none;
+  }
+  .dc-radio {
+    display: block;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+  }
+  .dc-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 25px 0 20px;
+  }
+  .dc-tabs label {
+    font-family: $accent-font;
+    font-weight: $bold;
+    font-size: 12px;
+    letter-spacing: .16em;
+    text-transform: uppercase;
+    color: $h5-color;
+    margin: 0;
+    padding: 10px 26px;
+    border: 1px solid $keyline-color;
+    cursor: pointer;
+    transition: all 300ms ease-in-out;
+  }
+  #dc-her:checked ~ .dc-tabs label[for="dc-her"],
+  #dc-him:checked ~ .dc-tabs label[for="dc-him"] {
+    background: $accent-color;
+    border-color: $accent-color;
+    color: $txt-primary;
+  }
+  // The global `*:focus { outline: none !important }` above would otherwise swallow this, and
+  // the labels are the only visible control for a keyboard user.
+  #dc-her:focus-visible ~ .dc-tabs label[for="dc-her"],
+  #dc-him:focus-visible ~ .dc-tabs label[for="dc-him"] {
+    outline: 2px solid $accent-color-hover !important;
+    outline-offset: 2px;
+  }
+  #dc-her:checked ~ .dc-panes .dc-him,
+  #dc-him:checked ~ .dc-panes .dc-her {
+    display: none;
+  }
 }
