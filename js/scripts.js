@@ -196,6 +196,14 @@ $(document).ready(function () {
             body: new URLSearchParams(new FormData(form))  // urlencoded is CORS-safelisted
         }).then(function () {
             $('#alert-wrapper').html('');
+            // Once the thank-you modal closes, land on the travel tips. #recommendations is
+            // English-only, so on cat/ this is a no-op. Same offset/duration as the nav links.
+            var next = $('#recommendations');
+            if (next.length) {
+                $('#rsvp-modal').one('hidden.bs.modal', function () {
+                    $('html,body').animate({scrollTop: next.offset().top - 90}, 1000);
+                });
+            }
             $('#rsvp-modal').modal('show');
         }).catch(function () {
             $('#alert-wrapper').html(alert_markup('danger', T.netError));

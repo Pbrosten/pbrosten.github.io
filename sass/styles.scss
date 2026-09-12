@@ -588,7 +588,8 @@ Google map
 RSVP form
 ========================================================================== */
 .rsvp {
-  padding-bottom: 140px;
+  // 100px + the 40px .section-padding of #recommendations below it; was 140px when the footer came next.
+  padding-bottom: 100px;
   .rsvp-form {
     .rsvp-btn {
       padding: 15px 0;
@@ -711,14 +712,13 @@ RSVP form
         color: $form-placeholder;
       }
     }
-    // informative blurb under the accommodation/transport row — collapsed by default
-    // so it never competes with the fields above it.
+    // informative blurb under the accommodation/transport row — always open;
+    // a collapsed <details> got mistaken for a header and skipped.
     .form-note {
       text-align: left;
       margin: 0 0 10px;
 
-      summary {
-        cursor: pointer;
+      .form-note-title {
         font-size: 13px;
         color: $accent-color;
         padding: 5px 0;
@@ -729,7 +729,7 @@ RSVP form
         padding: 8px 0 0;
       }
       @media (min-width: 992px) {
-        summary {
+        .form-note-title {
           font-size: 20px;
         }
         p {
