@@ -204,6 +204,9 @@ $(document).ready(function () {
                     $('html,body').animate({scrollTop: next.offset().top - 90}, 1000);
                 });
             }
+            // Show the thank-you line matching the guest's yes/no/maybe answer.
+            var answer = form.elements['entry.877086558'].value;
+            $('#rsvp-modal [data-rsvp]').each(function () { this.hidden = this.dataset.rsvp !== answer; });
             $('#rsvp-modal').modal('show');
         }).catch(function () {
             $('#alert-wrapper').html(alert_markup('danger', T.netError));

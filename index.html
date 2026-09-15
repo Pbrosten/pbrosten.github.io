@@ -558,7 +558,10 @@
                         </button>
                         <div class="section-padding">
                             <h3>Thank you!</h3>
-                            <p>We are glad to see you join us on our big day.</p>
+                            <!-- data-rsvp matches the attendance <select> option values; scripts.js shows one -->
+                            <p data-rsvp="Yes, I'll be there">We are glad to see you join us on our big day.</p>
+                            <p data-rsvp="Sorry, can't make it" hidden>We're sorry you can't make it. You'll be missed!</p>
+                            <p data-rsvp="I'm not sure" hidden>No problem, just come back and resubmit once you know.</p>
                         </div>
                     </div>
                 </div><!-- /.modal-content -->

@@ -338,32 +338,32 @@
                 </button>
                 <div class="collage-scroll">
                     <!-- gallery:start -->
-                    <img src="../img/gallery/00-costa-brava-1.jpg" alt="00 costa brava 1" loading="lazy">
-                    <img src="../img/gallery/01-sant-jordi.jpg" alt="01 sant jordi" loading="lazy">
-                    <img src="../img/gallery/02-formenterra.jpg" alt="02 formenterra" loading="lazy">
-                    <img src="../img/gallery/03-montserrat.jpg" alt="03 montserrat" loading="lazy">
-                    <img src="../img/gallery/04-garmisch-2.JPG" alt="04 garmisch 2" loading="lazy">
-                    <img src="../img/gallery/05-christmas.jpg" alt="05 christmas" loading="lazy">
-                    <img src="../img/gallery/06-costa-brava-2.jpg" alt="06 costa brava 2" loading="lazy">
-                    <img src="../img/gallery/12-smores.jpg" alt="12 smores" loading="lazy">
-                    <img src="../img/gallery/15-peratallada.JPG" alt="15 peratallada" loading="lazy">
-                    <img src="../img/gallery/25-go-nats.jpg" alt="25 go nats" loading="lazy">
-                    <img src="../img/gallery/25-runnin-1.jpg" alt="25 runnin 1" loading="lazy">
-                    <img src="../img/gallery/26-quaker-lake.jpg" alt="26 quaker lake" loading="lazy">
-                    <img src="../img/gallery/30-Rome.jpg" alt="30 Rome" loading="lazy">
-                    <img src="../img/gallery/35-runnin-2.jpg" alt="35 runnin 2" loading="lazy">
-                    <img src="../img/gallery/45-viena.jpg" alt="45 viena" loading="lazy">
-                    <img src="../img/gallery/48-home-deed.jpg" alt="48 home deed" loading="lazy">
-                    <img src="../img/gallery/48-keys.jpg" alt="48 keys" loading="lazy">
-                    <img src="../img/gallery/49-home-reno.jpg" alt="49 home reno" loading="lazy">
-                    <img src="../img/gallery/49-pizza-date.jpg" alt="49 pizza date" loading="lazy">
-                    <img src="../img/gallery/50-moving.jpg" alt="50 moving" loading="lazy">
-                    <img src="../img/gallery/51-cuddles.jpg" alt="51 cuddles" loading="lazy">
-                    <img src="../img/gallery/60-port-del-compte.jpg" alt="60 port del compte" loading="lazy">
-                    <img src="../img/gallery/65-london.jpg" alt="65 london" loading="lazy">
-                    <img src="../img/gallery/98-paretallada-2.jpg" alt="98 paretallada 2" loading="lazy">
-                    <img src="../img/gallery/99-engagement.jpg" alt="99 engagement" loading="lazy">
-                    <!-- gallery:end -->
+                <img src="../img/gallery/00-costa-brava-1.jpg" alt="00 costa brava 1" loading="lazy">
+                <img src="../img/gallery/01-sant-jordi.jpg" alt="01 sant jordi" loading="lazy">
+                <img src="../img/gallery/02-formenterra.jpg" alt="02 formenterra" loading="lazy">
+                <img src="../img/gallery/03-montserrat.jpg" alt="03 montserrat" loading="lazy">
+                <img src="../img/gallery/04-garmisch-2.JPG" alt="04 garmisch 2" loading="lazy">
+                <img src="../img/gallery/05-christmas.jpg" alt="05 christmas" loading="lazy">
+                <img src="../img/gallery/06-costa-brava-2.jpg" alt="06 costa brava 2" loading="lazy">
+                <img src="../img/gallery/12-smores.jpg" alt="12 smores" loading="lazy">
+                <img src="../img/gallery/15-peratallada.JPG" alt="15 peratallada" loading="lazy">
+                <img src="../img/gallery/25-go-nats.jpg" alt="25 go nats" loading="lazy">
+                <img src="../img/gallery/25-runnin-1.jpg" alt="25 runnin 1" loading="lazy">
+                <img src="../img/gallery/26-quaker-lake.jpg" alt="26 quaker lake" loading="lazy">
+                <img src="../img/gallery/30-Rome.jpg" alt="30 Rome" loading="lazy">
+                <img src="../img/gallery/35-runnin-2.jpg" alt="35 runnin 2" loading="lazy">
+                <img src="../img/gallery/45-viena.jpg" alt="45 viena" loading="lazy">
+                <img src="../img/gallery/48-home-deed.jpg" alt="48 home deed" loading="lazy">
+                <img src="../img/gallery/48-keys.jpg" alt="48 keys" loading="lazy">
+                <img src="../img/gallery/49-home-reno.jpg" alt="49 home reno" loading="lazy">
+                <img src="../img/gallery/49-pizza-date.jpg" alt="49 pizza date" loading="lazy">
+                <img src="../img/gallery/50-moving.jpg" alt="50 moving" loading="lazy">
+                <img src="../img/gallery/51-cuddles.jpg" alt="51 cuddles" loading="lazy">
+                <img src="../img/gallery/60-port-del-compte.jpg" alt="60 port del compte" loading="lazy">
+                <img src="../img/gallery/65-london.jpg" alt="65 london" loading="lazy">
+                <img src="../img/gallery/98-paretallada-2.jpg" alt="98 paretallada 2" loading="lazy">
+                <img src="../img/gallery/99-engagement.jpg" alt="99 engagement" loading="lazy">
+                <!-- gallery:end -->
                 </div>
                 <button class="collage-nav collage-next" type="button" aria-label="Foto següent">
                     <i class="fa fa-angle-right"></i>
@@ -564,7 +564,10 @@
                         </button>
                         <div class="section-padding">
                             <h3>Gràcies!</h3>
-                            <p>Estem contents que ens acompanyis en el nostre gran dia.</p>
+                            <!-- data-rsvp matches the attendance <select> option values; scripts.js shows one -->
+                            <p data-rsvp="Yes, I'll be there">Estem contents que ens acompanyis en el nostre gran dia.</p>
+                            <p data-rsvp="Sorry, can't make it" hidden>Ens sap greu que no hi puguis ser. Et trobarem a faltar!</p>
+                            <p data-rsvp="I'm not sure" hidden>Cap problema, torna a enviar el formulari quan ho sàpigues.</p>
                         </div>
                     </div>
                 </div><!-- /.modal-content -->
