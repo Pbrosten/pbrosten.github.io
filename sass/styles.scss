@@ -389,6 +389,22 @@ Intro
     color: $txt-primary;
   }
 
+  // inline Revolut glyph sized like an FA icon, takes the pill's text colour incl. hover.
+  // Global within .events: index.html has it inside .gift-row, cat/index.html in the button column.
+  .gift-icon {
+    width: 1em;
+    height: 1em;
+    fill: currentColor;
+    vertical-align: -0.125em;
+  }
+
+  // cat/index.html: short centred blurb between Add-to-calendar and the Revolut pill
+  .gift-blurb {
+    margin: 30px auto 0;
+    padding-bottom: 0;
+    max-width: 34em;
+  }
+
   // "Prefer not to carry cash?" line with the Revolut pill on its right; wraps under on narrow cols
   .gift-row {
     display: flex;
@@ -400,14 +416,6 @@ Intro
       flex: 1 1 200px;
       padding-bottom: 0;
       margin: 0; // bootstrap's 10px bottom margin would push the pill off the text's centre
-    }
-
-    // inline Revolut glyph sized like an FA icon, takes the pill's text colour incl. hover
-    .gift-icon {
-      width: 1em;
-      height: 1em;
-      fill: currentColor;
-      vertical-align: -0.125em;
     }
 
     // desktop: never wrap — the text takes the extra lines, the pill keeps its width
