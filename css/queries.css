@@ -259,16 +259,6 @@
         width: 61vw;
     }
 
-    .hero .btn {
-        display: block;
-        width: 80%;
-        margin: 0 auto;
-    }
-
-    .hero .btn:first-of-type {
-        margin-bottom: 20px;
-    }
-
     .hero h1 {
         font-size: 50px;
     }
