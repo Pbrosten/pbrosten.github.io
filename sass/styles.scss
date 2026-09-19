@@ -811,6 +811,25 @@ Dress code inspiration boards
   height: auto;
   margin: 0 auto;
 }
+// Colours-to-avoid strip under the women's board. Inherits the img sizing above; the
+// caption just needs air after the board and to sit over the swatches.
+// Shares .dc-heading's type; centred and un-ruled so it reads as a footnote, not a third tab.
+.dc-avoid {
+  text-align: center;
+  border: 0;
+  padding: 0;
+  margin: 30px 0 12px;
+}
+// The swatch strip is a footnote, not a second board: half the board's width at every breakpoint
+// (`.dc-looks img` is 100% mobile / 50% desktop), so it never competes with the dresses.
+.dc-looks .dc-avoid + img {
+  width: 50%;
+}
+@media (min-width: 992px) {
+  .dc-looks .dc-avoid + img {
+    width: 25%;
+  }
+}
 // Mobile: no tabs, both boards shown, each with its own heading. `display:none` on the radios
 // (rather than the usual visually-hidden) also keeps them out of the tab order while inert.
 .dc-radio,
@@ -835,7 +854,7 @@ Dress code inspiration boards
   .dc-looks img {
     width: 50%;
   }
-  .dc-heading {
+  .dc-heading:not(.dc-avoid) {
     display: none;
   }
   .dc-radio {
