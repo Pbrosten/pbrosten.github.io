@@ -388,6 +388,37 @@ Intro
     text-transform: lowercase;
     color: $txt-primary;
   }
+
+  // "Prefer not to carry cash?" line with the Revolut pill on its right; wraps under on narrow cols
+  .gift-row {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 20px;
+
+    p {
+      flex: 1 1 200px;
+      padding-bottom: 0;
+      margin: 0; // bootstrap's 10px bottom margin would push the pill off the text's centre
+    }
+
+    // inline Revolut glyph sized like an FA icon, takes the pill's text colour incl. hover
+    .gift-icon {
+      width: 1em;
+      height: 1em;
+      fill: currentColor;
+      vertical-align: -0.125em;
+    }
+
+    // desktop: never wrap — the text takes the extra lines, the pill keeps its width
+    @media (min-width: 992px) {
+      flex-wrap: nowrap;
+
+      .btn {
+        flex: 0 0 auto;
+      }
+    }
+  }
 }
 
 /* ==========================================================================
@@ -397,13 +428,8 @@ Pictures strip
   position: relative; // anchors the arrows, which sit outside the scroller so they don't scroll away
 }
 .collage-caption {
-  color: $txt-primary;
-  font-size: large;
+  color: $txt-primary; // size comes from the base p rule, same as the How-we-met copy
   min-height: 1.5em; // holds its line so the strip doesn't jump on an uncaptioned photo
-
-  @media (min-width: 992px) {
-    font-size: 24px;
-  }
 }
 .collage-scroll {
   position: relative; // makes this the offsetParent, so the script's offsetLeft maths is relative to it
