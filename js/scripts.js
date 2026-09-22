@@ -172,6 +172,15 @@ $(document).ready(function () {
     /********************** RSVP **********************/
     // Posts straight to the Google Form's formResponse endpoint (URL is the form's action
     // attribute, so cat/index.html needs no separate JS).
+    // No accommodation => no hotel taxi to offer, so transport is forced to "No" and locked.
+    // Disabled controls are left out of FormData, so the submit handler re-adds it below.
+    var transport = $('#rsvp-form [name="entry.234007366"]');
+    $('#rsvp-form [name="entry.1306621828"]').on('change', function () {
+        var noStay = this.value === 'No';
+        transport.prop('disabled', noStay);
+        if (noStay) transport.val('No');
+    });
+
     $('#rsvp-form').on('submit', function (e) {
         e.preventDefault();
         var form = this;
@@ -190,10 +199,12 @@ $(document).ready(function () {
         // ponytail: no-cors means we cannot read Google's reply, so a Google-side rejection
         // looks like success. Mitigated by keeping every Form question optional and doing
         // all validation in the browser — see site-wiki/planning/rsvp-google-form.md.
+        var body = new URLSearchParams(new FormData(form));  // urlencoded is CORS-safelisted
+        if (transport.prop('disabled')) body.set(transport.attr('name'), transport.val());
         fetch(form.action, {
             method: 'POST',
             mode: 'no-cors',
-            body: new URLSearchParams(new FormData(form))  // urlencoded is CORS-safelisted
+            body: body
         }).then(function () {
             $('#alert-wrapper').html('');
             // Once the thank-you modal closes, land on the travel tips. #recommendations is

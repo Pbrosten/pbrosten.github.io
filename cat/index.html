@@ -677,11 +677,10 @@
                             </div>
                             <div class="col-md-6 col-sm-6">
                                 <div class="form-input-group">
-                                    <!-- The only optional select, so its placeholder is NOT disabled:
-                                     a guest who mis-clicks can go back to blank. The two required
-                                     ones keep `disabled` — there, blank is not an answer. -->
-                                    <i class="fa fa-bus"></i><select name="entry.234007366">
-                                        <option value="" selected>Vols transport fins al lloc?</option>
+                                    <!-- Required, but scripts.js disables it (and forces "No") when
+                                     accommodation is "No"; disabled controls skip validation. -->
+                                    <i class="fa fa-bus"></i><select name="entry.234007366" required>
+                                        <option value="" disabled selected>Vols transport fins al lloc?</option>
                                         <option value="Yes">Sí</option>
                                         <option value="No">No</option>
                                     </select>

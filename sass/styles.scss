@@ -713,16 +713,10 @@ RSVP form
       select:invalid {
         color: $form-placeholder;
       }
-      // What we actually mean is "the placeholder option is still showing". `:invalid` is only a
-      // proxy for that, and it only holds on a *required* select — the optional transport field
-      // was never invalid, so its placeholder rendered in full body colour and read as an answer
-      // sitting next to the greyed-out accommodation one.
-      //
-      // Kept as its own rule, NOT comma-joined to the one above: a parser that doesn't know
-      // `:has()` drops a whole selector list containing it, which would take `select:invalid`
-      // down with it. Split, such a browser just falls back to today's behaviour.
-      select:has(option[value=""]:checked) {
-        color: $form-placeholder;
+      // `color: inherit` above overrides the browser's greyed-out disabled look, so restore one.
+      select:disabled {
+        opacity: 0.5;
+        cursor: not-allowed;
       }
       textarea {
         height: auto;
